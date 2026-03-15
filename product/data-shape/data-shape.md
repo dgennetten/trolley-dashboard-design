@@ -35,7 +35,7 @@ A role assigned to a user for access control purposes. Roles are flexible and co
 ## Relationships
 
 - Member has one MembershipLevel
-- Member has zero or one VolunteerRole
+- Member has zero or many VolunteerRoles
 - Member has many Payments
 - Member has many Messages (sent)
 - Member has many ActivityLog entries (as subject)

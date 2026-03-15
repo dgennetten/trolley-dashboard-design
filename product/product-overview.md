@@ -27,7 +27,7 @@ A built-in CMS lets authorized admins update public-facing content (hero, notice
 - Member self-service portal: profile view, annual/past-due renewal, messaging to admin or role manager
 - New member application form with Venmo/PayPal/check payment options
 - Charter request form (name, email, phone, preferred/secondary dates & times, message)
-- Volunteer role tracking (Board Member, Motorman, Conductor, Depot Staff, Mechanic, plus Supervisors for each) with certification status
+- Volunteer role tracking (Board Member, Motorman, Conductor, Depot Staff, Mechanic, plus Supervisors for each) with certification status; members may hold multiple roles
 - Supervisor view: supervisors see an admin dashboard scoped to their subordinates (volunteers in the same role category), with bulk "needs recertification" reset (typically at season start) and individual recertification marking
 - Four membership tiers: Depot ($20), Mountain Barn ($50), Howes Barn ($100), Lifetime ($500)
 - Admin CMS for events (dates, descriptions, photos) and site content
