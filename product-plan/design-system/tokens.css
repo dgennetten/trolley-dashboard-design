@@ -1,0 +1,13 @@
+/* Design Tokens for Fort Collins Trolley */
+
+:root {
+  /* Colors — Using Tailwind's built-in color palette */
+  --color-primary: emerald;
+  --color-secondary: amber;
+  --color-neutral: stone;
+
+  /* Typography — Google Fonts */
+  --font-heading: 'DM Sans', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+}

@@ -1,0 +1,230 @@
+{
+  "_meta": {
+    "models": {
+      "HeroContent": "CMS-managed content for the landing page hero section: images, headline, subtitle, CTA buttons, and an optional notice banner.",
+      "Event": "A public-facing trolley event with a title, date/time, description, and photo.",
+      "ScheduleInfo": "Operating schedule, route description, and fare tiers for the Schedules & Fares page.",
+      "CharterInfo": "Descriptive content and policies displayed on the Charters page above the request form.",
+      "MembershipLevel": "A membership tier with name, annual cost, and list of benefits.",
+      "SupportOption": "An additional way to support the trolley beyond membership (donate, volunteer, advertise, charter).",
+      "AboutContent": "Organization information, recognition, officers, contact details, and hours for the About page.",
+      "Officer": "A board member or officer with name and title."
+    },
+    "relationships": [
+      "HeroContent is a singleton managed via the CMS",
+      "Events are listed on the Events page and previewed on the landing page",
+      "MembershipLevels are displayed on the Support Us page and in the signup modal",
+      "SupportOptions are displayed below the membership section on Support Us",
+      "AboutContent is a singleton with nested officers and recognition arrays"
+    ]
+  },
+  "heroContent": {
+    "headline": "Fort Collins Trolley",
+    "subtitle": "Ride the rails of history. Celebrating 40 years of heritage railway operation in Fort Collins.",
+    "heroImages": [
+      { "url": "/images/hero-trolley-mountain-ave.jpg", "alt": "Car 21 on Mountain Avenue" },
+      { "url": "/images/hero-trolley-city-park.jpg", "alt": "Trolley arriving at City Park stop" }
+    ],
+    "ctaButtons": [
+      { "label": "View Schedule", "href": "/schedules", "variant": "primary" },
+      { "label": "Support Us", "href": "/support", "variant": "secondary" }
+    ],
+    "noticeBanner": {
+      "enabled": true,
+      "text": "The 2026 Trolley Riding Season Starts on May 2!",
+      "linkText": "View Schedule",
+      "linkHref": "/schedules"
+    }
+  },
+  "events": [
+    {
+      "id": "evt-001",
+      "title": "Opening Day 2026",
+      "date": "2026-05-02T12:00:00",
+      "description": "Join us for the first rides of the 2026 season! Free rides for members all day, plus live music at the depot.",
+      "photoUrl": "/images/events/opening-day.jpg"
+    },
+    {
+      "id": "evt-002",
+      "title": "Trolley History Lecture Series",
+      "date": "2026-05-16T14:00:00",
+      "description": "Local historian Dr. Patricia Rourke presents 'Electric Dreams: How Streetcars Shaped Fort Collins' at the Mountain Avenue depot.",
+      "photoUrl": "/images/events/lecture-series.jpg"
+    },
+    {
+      "id": "evt-003",
+      "title": "Kids Ride Free Day",
+      "date": "2026-06-07T12:00:00",
+      "description": "All children 12 and under ride free with a paying adult. Special coloring books and trolley stickers for young riders.",
+      "photoUrl": "/images/events/kids-day.jpg"
+    },
+    {
+      "id": "evt-004",
+      "title": "Independence Day Celebration",
+      "date": "2026-07-04T11:00:00",
+      "description": "Decorated trolleys run extended hours from 11am to 7pm. Enjoy patriotic decorations and festive music aboard Car 21 and Car 25.",
+      "photoUrl": "/images/events/july-fourth.jpg"
+    },
+    {
+      "id": "evt-005",
+      "title": "End of Season Celebration",
+      "date": "2026-09-07T12:00:00",
+      "description": "Last rides of the 2026 season. Member appreciation event with refreshments at the depot. Help us close out another great year on the rails.",
+      "photoUrl": null
+    }
+  ],
+  "scheduleInfo": {
+    "season": "May through September 2026",
+    "operatingDays": "Saturdays, Sundays & Holidays",
+    "hours": "Noon – 5:00 PM",
+    "frequency": "Every 30 minutes",
+    "route": "City Park to Old Town (Mountain Avenue corridor, 1.5 miles)",
+    "fares": [
+      { "category": "Adults", "price": 3, "note": null },
+      { "category": "Seniors (65+)", "price": 2, "note": null },
+      { "category": "Children (3–12)", "price": 2, "note": null },
+      { "category": "Children under 3", "price": 0, "note": "Free with paying adult" },
+      { "category": "Members", "price": 0, "note": "6 free rides per season with membership" }
+    ]
+  },
+  "charterInfo": {
+    "title": "Charter the Trolley For an Event",
+    "description": "A private charter can spice up a special occasion for your family, colleagues, or classroom. Charters are available outside of regular operating hours. Scheduling is limited, so please pick a preferred date and a secondary date for our crew to tentatively reserve for your event. We will confirm availability before we officially schedule and request payment to hold your date.",
+    "policies": [
+      "Not available between 12–5pm on Saturdays, Sundays, or Holidays",
+      "Scheduling is subject to crew availability",
+      "Payment required to confirm reservation"
+    ]
+  },
+  "membershipLevels": [
+    {
+      "id": "depot",
+      "name": "Depot Level",
+      "price": 20,
+      "period": "year",
+      "tagline": "Perfect for casual riders!",
+      "benefits": [
+        "6 rides per season"
+      ]
+    },
+    {
+      "id": "mountain-barn",
+      "name": "Mountain Barn Level",
+      "price": 50,
+      "period": "year",
+      "tagline": "Ideal for trolley enthusiasts!",
+      "benefits": [
+        "6 rides per season",
+        "10% discount on merchandise at the trolley depot"
+      ]
+    },
+    {
+      "id": "howes-barn",
+      "name": "Howes Barn Level",
+      "price": 100,
+      "period": "year",
+      "tagline": "For dedicated fans!",
+      "benefits": [
+        "6 rides per season",
+        "10% discount on merchandise at the trolley depot",
+        "Trolley branded cup/glass"
+      ]
+    },
+    {
+      "id": "lifetime",
+      "name": "Lifetime Membership",
+      "price": 500,
+      "period": "one-time",
+      "tagline": "The ultimate expression of trolley love!",
+      "benefits": [
+        "6 rides per season",
+        "10% discount on merchandise at the trolley depot",
+        "Trolley branded cup/glass",
+        "Unique trolley art/print"
+      ]
+    }
+  ],
+  "supportOptions": [
+    {
+      "id": "donate",
+      "title": "Donate",
+      "description": "A great way to support the Trolley is by donating. Your tax-deductible donation helps to preserve the history of the Fort Collins Municipal Railway Society.",
+      "buttonLabel": "Donate Now",
+      "href": "/donate",
+      "icon": "heart"
+    },
+    {
+      "id": "volunteer",
+      "title": "Volunteer",
+      "description": "We're a 100% volunteer-based organization, everything from driving and maintaining the trolleys to grant writing and website building.",
+      "buttonLabel": "Become a Volunteer",
+      "href": "/volunteer",
+      "icon": "users"
+    },
+    {
+      "id": "advertise",
+      "title": "Advertise Inside the Trolleys",
+      "description": "A great way to promote your business is by advertising on a car card inside the Trolleys. The practice of advertising on streetcars started with the first horsecars in the 1890s.",
+      "buttonLabel": "Car Cards Information",
+      "href": "/advertise",
+      "icon": "megaphone"
+    },
+    {
+      "id": "charter",
+      "title": "Charter the Trolley For an Event",
+      "description": "A private charter can spice up a special occasion for your family, colleagues or classroom.",
+      "buttonLabel": "Charter Information",
+      "href": "/charters",
+      "icon": "partyPopper"
+    }
+  ],
+  "aboutContent": {
+    "orgDescription": "The Fort Collins Municipal Railway Society (FCMRS) is a 501(c)(3) non-profit corporation working in partnership with the Fort Collins Museum to restore and operate the Fort Collins Municipal Railway, presenting a living history of electric public transportation in Fort Collins. We preserve, display, operate, and interpret streetcar service, and collect artifacts and information of an educational nature and of significance to the City's electric railway.",
+    "missionPoints": [
+      "Promote excellence in operating safely and in strict accordance with our Operating Agreement with the City.",
+      "Adhere to all applicable federal, state and local laws.",
+      "Maintain the equipment, power supply and track in safe, attractive and functioning condition and as close to the historically accurate, original condition as practical."
+    ],
+    "volunteerRoles": [
+      "Elected officers and board of directors",
+      "Conductors, motormen and depot agents",
+      "Equipment and right-of-way maintainers",
+      "Crew scheduler/dispatcher and charter coordinator"
+    ],
+    "recognition": [
+      "Department of Transportation Award for Outstanding Public Service to Transportation and Historic Preservation",
+      "Award of Merit from the American Association of State and Local History",
+      "Preservation Honor Award from Colorado Preservation, Inc.",
+      "Stephen H. Hart Award from the Colorado Historical Society",
+      "Designated as a Fort Collins Local Landmark and entered in the National Register of Historic Places"
+    ],
+    "newsletters": [
+      { "title": "Vol 42 • Number 1 • June 2022", "url": "/newsletters/vol42-1.pdf" },
+      { "title": "Vol 42 • Number 2 • September 2022", "url": "/newsletters/vol42-2.pdf" }
+    ],
+    "officers": [
+      { "name": "Jim Bowers", "title": "President" },
+      { "name": "John Mol", "title": "Vice President" },
+      { "name": "Douglas Gennetten", "title": "Secretary" },
+      { "name": "Maree Johnston", "title": "Treasurer" },
+      { "name": "Cyrus Bavarian", "title": "Director" },
+      { "name": "Blake Bergersen", "title": "Director" },
+      { "name": "Kreig Larson", "title": "Director" },
+      { "name": "Kathy Rech", "title": "Director" },
+      { "name": "Craig Stith", "title": "Director" }
+    ],
+    "contact": {
+      "orgName": "Fort Collins Municipal Railway Society",
+      "address": "330 N Howes, Fort Collins, CO 80521",
+      "email": "info@fortcollinstrolley.org",
+      "cityLiaison": "Brent Carmack"
+    },
+    "hours": "Saturdays, Sundays, & Holidays | Noon - 5pm | May - Sept."
+  },
+  "paymentOptions": {
+    "venmoUrl": "https://venmo.com/fortcollinstrolley",
+    "paypalUrl": "https://paypal.me/fortcollinstrolley",
+    "checkPayableTo": "Fort Collins Municipal Railway Society",
+    "checkMailTo": "330 N. Howes Street, Fort Collins, CO 80521"
+  }
+}

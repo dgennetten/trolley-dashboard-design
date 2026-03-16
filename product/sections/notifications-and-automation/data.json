@@ -1,0 +1,184 @@
+{
+  "_meta": {
+    "models": {
+      "NotificationType": "A configurable notification category with an enabled toggle, description, and timing details. Covers renewal reminders, welcome emails, payment confirmations, certification alerts, and charter confirmations.",
+      "NotificationLogEntry": "A record of a single notification that was sent, including the type, recipient, subject, timestamp, and delivery status.",
+      "MemberRecipient": "A simplified member reference used in the manual reminder modal for member search and selection."
+    },
+    "relationships": [
+      "NotificationLogEntry references a NotificationType by typeId",
+      "NotificationLogEntry references a member as the recipient",
+      "NotificationType configuration is managed by Membership Admin and Super Admin roles"
+    ]
+  },
+  "notificationTypes": [
+    {
+      "id": "renewal-reminder",
+      "name": "Renewal Reminders",
+      "description": "Automated emails sent to members approaching membership expiry or with past-due payments.",
+      "enabled": true,
+      "icon": "clock",
+      "schedule": [
+        { "label": "First reminder", "timing": "30 days before expiry" },
+        { "label": "Second reminder", "timing": "7 days before expiry" },
+        { "label": "Final reminder", "timing": "Day of expiry" }
+      ],
+      "supportsManualTrigger": true,
+      "lastTriggered": "2026-03-14T06:00:00Z"
+    },
+    {
+      "id": "welcome-email",
+      "name": "Welcome Email",
+      "description": "Sent automatically when a new member signs up, confirming their registration and membership level.",
+      "enabled": true,
+      "icon": "user-plus",
+      "schedule": [
+        { "label": "Trigger", "timing": "Immediately on signup" }
+      ],
+      "supportsManualTrigger": false,
+      "lastTriggered": "2026-03-01T10:15:00Z"
+    },
+    {
+      "id": "payment-confirmation",
+      "name": "Payment Confirmation",
+      "description": "Sent when a membership payment is recorded, confirming the amount and updated membership status.",
+      "enabled": true,
+      "icon": "credit-card",
+      "schedule": [
+        { "label": "Trigger", "timing": "Immediately on payment" }
+      ],
+      "supportsManualTrigger": false,
+      "lastTriggered": "2026-02-28T14:30:00Z"
+    },
+    {
+      "id": "certification-alert",
+      "name": "Certification Expiry Alert",
+      "description": "Notifies volunteers when their certification status is reset to 'needs recertification,' typically at the start of each season.",
+      "enabled": true,
+      "icon": "award",
+      "schedule": [
+        { "label": "Trigger", "timing": "On certification status change" }
+      ],
+      "supportsManualTrigger": false,
+      "lastTriggered": "2025-03-15T09:00:00Z"
+    },
+    {
+      "id": "charter-confirmation",
+      "name": "Charter Request Confirmation",
+      "description": "Sent to the requester when a charter request is submitted through the public website, confirming receipt.",
+      "enabled": false,
+      "icon": "tram-front",
+      "schedule": [
+        { "label": "Trigger", "timing": "Immediately on submission" }
+      ],
+      "supportsManualTrigger": false,
+      "lastTriggered": null
+    }
+  ],
+  "notificationLog": [
+    {
+      "id": "log-001",
+      "typeId": "renewal-reminder",
+      "typeName": "Renewal Reminder",
+      "recipientName": "David Chen",
+      "recipientEmail": "david.chen@email.com",
+      "subject": "Your Fort Collins Trolley membership is past due",
+      "sentAt": "2026-03-14T06:00:00Z",
+      "status": "delivered"
+    },
+    {
+      "id": "log-002",
+      "typeId": "renewal-reminder",
+      "typeName": "Renewal Reminder",
+      "recipientName": "Patricia Waverly",
+      "recipientEmail": "pat.waverly@email.com",
+      "subject": "Your Fort Collins Trolley membership is past due",
+      "sentAt": "2026-03-14T06:00:00Z",
+      "status": "delivered"
+    },
+    {
+      "id": "log-003",
+      "typeId": "renewal-reminder",
+      "typeName": "Renewal Reminder",
+      "recipientName": "David Chen",
+      "recipientEmail": "david.chen@email.com",
+      "subject": "Reminder: Your membership expires in 7 days",
+      "sentAt": "2026-03-10T06:00:00Z",
+      "status": "delivered"
+    },
+    {
+      "id": "log-004",
+      "typeId": "welcome-email",
+      "typeName": "Welcome Email",
+      "recipientName": "Emily Nguyen",
+      "recipientEmail": "emily.nguyen@email.com",
+      "subject": "Welcome to the Fort Collins Municipal Railway Society!",
+      "sentAt": "2026-03-01T10:15:00Z",
+      "status": "delivered"
+    },
+    {
+      "id": "log-005",
+      "typeId": "payment-confirmation",
+      "typeName": "Payment Confirmation",
+      "recipientName": "Robert Tanaka",
+      "recipientEmail": "robert.tanaka@email.com",
+      "subject": "Payment received — Mountain Barn membership renewed",
+      "sentAt": "2026-02-28T14:30:00Z",
+      "status": "delivered"
+    },
+    {
+      "id": "log-006",
+      "typeId": "payment-confirmation",
+      "typeName": "Payment Confirmation",
+      "recipientName": "Marcus Williams",
+      "recipientEmail": "marcus.williams@email.com",
+      "subject": "Payment received — Howes Barn membership renewed",
+      "sentAt": "2026-01-20T08:00:00Z",
+      "status": "delivered"
+    },
+    {
+      "id": "log-007",
+      "typeId": "renewal-reminder",
+      "typeName": "Renewal Reminder",
+      "recipientName": "David Chen",
+      "recipientEmail": "david.chen@email.com",
+      "subject": "Your membership expires in 30 days",
+      "sentAt": "2026-02-20T06:00:00Z",
+      "status": "delivered"
+    },
+    {
+      "id": "log-008",
+      "typeId": "renewal-reminder",
+      "typeName": "Renewal Reminder",
+      "recipientName": "Patricia Waverly",
+      "recipientEmail": "pat.waverly@email.com",
+      "subject": "Your membership expires in 30 days",
+      "sentAt": "2025-12-02T06:00:00Z",
+      "status": "failed"
+    },
+    {
+      "id": "log-009",
+      "typeId": "certification-alert",
+      "typeName": "Certification Alert",
+      "recipientName": "All Conductors",
+      "recipientEmail": "7 recipients",
+      "subject": "Your conductor certification needs renewal for the 2025 season",
+      "sentAt": "2025-03-15T09:00:00Z",
+      "status": "delivered"
+    },
+    {
+      "id": "log-010",
+      "typeId": "renewal-reminder",
+      "typeName": "Renewal Reminder",
+      "recipientName": "Patricia Waverly",
+      "recipientEmail": "pat.waverly@email.com",
+      "subject": "Your membership expires in 7 days",
+      "sentAt": "2025-12-25T06:00:00Z",
+      "status": "delivered"
+    }
+  ],
+  "memberRecipients": [
+    { "id": "mbr-005", "name": "David Chen", "email": "david.chen@email.com", "paymentStatus": "past_due" },
+    { "id": "mbr-006", "name": "Patricia Waverly", "email": "pat.waverly@email.com", "paymentStatus": "past_due" }
+  ]
+}

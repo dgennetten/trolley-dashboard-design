@@ -1,0 +1,353 @@
+{
+  "_meta": {
+    "models": {
+      "HeroConfig": "The current configuration for the public landing page hero section, including images, headline, subtitle, CTA buttons, and the notice banner.",
+      "EventItem": "A public-facing event managed through the CMS. Includes title, date/time, description, excerpt, featured photo, and draft/publish status.",
+      "PageContent": "An editable public page with grouped content sections. Each page has a slug, display name, status, and an array of content blocks.",
+      "ContentBlock": "A single editable block within a page — can be a text section, a list, a contact block, or structured data like officers."
+    },
+    "relationships": [
+      "HeroConfig is a singleton — one active hero configuration at a time",
+      "EventItem is independent — each event stands alone",
+      "PageContent contains many ContentBlocks, ordered by position",
+      "All content items track createdAt, updatedAt, and updatedBy for audit"
+    ]
+  },
+  "heroConfig": {
+    "id": "hero-001",
+    "status": "published",
+    "headline": "Ride the Historic Fort Collins Trolley",
+    "subtitle": "Experience a living piece of Colorado history on our restored 1919 Birney streetcar. Weekends and holidays, May through September.",
+    "heroImages": [
+      {
+        "id": "img-001",
+        "url": "/images/hero/trolley-mountain-ave.jpg",
+        "alt": "Car 21 traveling down Mountain Avenue with the foothills in the background",
+        "position": 1
+      },
+      {
+        "id": "img-002",
+        "url": "/images/hero/trolley-city-park.jpg",
+        "alt": "Passengers boarding Car 21 at the City Park stop",
+        "position": 2
+      },
+      {
+        "id": "img-003",
+        "url": "/images/hero/trolley-sunset.jpg",
+        "alt": "Car 25 silhouetted against a summer sunset on the Mountain Avenue line",
+        "position": 3
+      }
+    ],
+    "ctaButtons": [
+      {
+        "label": "Plan Your Visit",
+        "href": "/schedules",
+        "variant": "primary"
+      },
+      {
+        "label": "Become a Member",
+        "href": "/support",
+        "variant": "secondary"
+      }
+    ],
+    "noticeBanner": {
+      "enabled": true,
+      "text": "The 2026 Trolley Riding Season Starts on May 2",
+      "linkText": "View Schedule",
+      "linkHref": "/schedules"
+    },
+    "updatedAt": "2026-03-01T14:30:00Z",
+    "updatedBy": "Jim Bowers"
+  },
+  "events": [
+    {
+      "id": "evt-001",
+      "title": "Opening Day 2026",
+      "date": "2026-05-02",
+      "time": "12:00",
+      "description": "Kick off the 40th season of heritage railway operations in Fort Collins! Join us for free rides all day, live music from the Aggie Theatre house band, and a brief ceremony with the Mayor at 1pm recognizing the Society's four decades of service to the community.",
+      "excerpt": "Free rides all day as we launch our milestone 40th season with live music and a mayoral ceremony.",
+      "featuredPhoto": {
+        "url": "/images/events/opening-day.jpg",
+        "alt": "Ribbon cutting ceremony at the trolley depot"
+      },
+      "status": "published",
+      "createdAt": "2026-02-15T10:00:00Z",
+      "updatedAt": "2026-03-01T09:00:00Z",
+      "updatedBy": "Jim Bowers"
+    },
+    {
+      "id": "evt-002",
+      "title": "Trolley Birthday Party — Car 21 Turns 107",
+      "date": "2026-06-14",
+      "time": "12:00",
+      "description": "Celebrate the birthday of our beloved Car 21, built in 1919 by the American Car Company in St. Louis. Activities include birthday cake, a brief history talk by Douglas Gennetten, kids' coloring sheets, and vintage photos on display in the depot.",
+      "excerpt": "Birthday cake, history talks, and activities as Car 21 celebrates 107 years of service.",
+      "featuredPhoto": {
+        "url": "/images/events/car21-birthday.jpg",
+        "alt": "Car 21 decorated with birthday bunting"
+      },
+      "status": "published",
+      "createdAt": "2026-02-20T11:00:00Z",
+      "updatedAt": "2026-02-20T11:00:00Z",
+      "updatedBy": "Maree Johnston"
+    },
+    {
+      "id": "evt-003",
+      "title": "Independence Day Trolley Rides",
+      "date": "2026-07-04",
+      "time": "10:00",
+      "description": "Extended hours for Independence Day! Rides run from 10am to 7pm with patriotic decorations on both cars. Wear red, white, and blue for a free souvenir pin while supplies last.",
+      "excerpt": "Extended hours and patriotic decorations — ride from 10am to 7pm this Fourth of July.",
+      "featuredPhoto": {
+        "url": "/images/events/fourth-july.jpg",
+        "alt": "Trolley with American flag bunting"
+      },
+      "status": "published",
+      "createdAt": "2026-03-01T08:00:00Z",
+      "updatedAt": "2026-03-05T16:00:00Z",
+      "updatedBy": "Jim Bowers"
+    },
+    {
+      "id": "evt-004",
+      "title": "Moonlight Trolley Ride",
+      "date": "2026-08-08",
+      "time": "20:00",
+      "description": "A special evening ride under the August full moon. Limited to 30 passengers per trip. Includes complimentary hot cocoa and a brief narrated history of the trolley line by lamplight. Reservation recommended — this event sells out every year.",
+      "excerpt": "Limited evening rides under the full moon with narrated history and complimentary hot cocoa.",
+      "featuredPhoto": null,
+      "status": "draft",
+      "createdAt": "2026-03-10T14:00:00Z",
+      "updatedAt": "2026-03-10T14:00:00Z",
+      "updatedBy": "Maree Johnston"
+    },
+    {
+      "id": "evt-005",
+      "title": "End of Season Celebration",
+      "date": "2026-09-07",
+      "time": "12:00",
+      "description": "The last day of regular 2026 operations. Free rides for all members, a volunteer appreciation barbecue at the depot, and a sneak peek at plans for the 2027 season. Help us close out another wonderful year of trolley operations.",
+      "excerpt": "Close out the season with free member rides, a volunteer barbecue, and 2027 season preview.",
+      "featuredPhoto": {
+        "url": "/images/events/end-of-season.jpg",
+        "alt": "Volunteers gathered at the depot for the annual barbecue"
+      },
+      "status": "draft",
+      "createdAt": "2026-03-12T09:00:00Z",
+      "updatedAt": "2026-03-12T09:00:00Z",
+      "updatedBy": "Jim Bowers"
+    },
+    {
+      "id": "evt-006",
+      "title": "Spring Track Inspection Walk",
+      "date": "2026-04-12",
+      "time": "09:00",
+      "description": "Join our maintenance crew for a behind-the-scenes walk along the 1.5-mile trolley line. Learn how we maintain the historic track, overhead wire, and right-of-way. Open to all members and prospective volunteers.",
+      "excerpt": "Behind-the-scenes tour of the trolley line with the maintenance crew — members welcome.",
+      "featuredPhoto": {
+        "url": "/images/events/track-inspection.jpg",
+        "alt": "Maintenance crew inspecting rail joints on Mountain Avenue"
+      },
+      "status": "published",
+      "createdAt": "2026-01-20T10:00:00Z",
+      "updatedAt": "2026-03-08T12:00:00Z",
+      "updatedBy": "Craig Stith"
+    }
+  ],
+  "pages": [
+    {
+      "id": "page-schedules",
+      "slug": "schedules",
+      "name": "Schedules & Fares",
+      "status": "published",
+      "updatedAt": "2026-02-01T10:00:00Z",
+      "updatedBy": "Jim Bowers",
+      "blocks": [
+        {
+          "id": "blk-sch-001",
+          "type": "text",
+          "label": "Operating Schedule",
+          "content": "Saturdays, Sundays, and Holidays from Noon to 5pm, May through September. Trolleys depart every 30 minutes from City Park and Old Town stops."
+        },
+        {
+          "id": "blk-sch-002",
+          "type": "text",
+          "label": "Route Description",
+          "content": "The trolley operates on a 1.5-mile route along Mountain Avenue between City Park and Old Town (Howes Street). The round trip takes approximately 25 minutes with stops at City Park, Roosevelt Avenue, and the Old Town Depot."
+        },
+        {
+          "id": "blk-sch-003",
+          "type": "list",
+          "label": "Fare Schedule",
+          "items": [
+            "Adults: $3 per ride",
+            "Seniors (65+): $2 per ride",
+            "Children (3-12): $1 per ride",
+            "Children under 3: Free",
+            "Members: Free (6 rides per season included)"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "page-charters",
+      "slug": "charters",
+      "name": "Charters",
+      "status": "published",
+      "updatedAt": "2026-01-15T09:00:00Z",
+      "updatedBy": "Jim Bowers",
+      "blocks": [
+        {
+          "id": "blk-ch-001",
+          "type": "text",
+          "label": "Charter Information",
+          "content": "A private charter can spice up a special occasion for your family, colleagues or classroom. Our trolleys can accommodate up to 40 passengers per trip. Charters are available outside of regular operating hours — weekdays and Saturday/Sunday/holiday mornings or evenings."
+        },
+        {
+          "id": "blk-ch-002",
+          "type": "list",
+          "label": "Charter Policies",
+          "items": [
+            "Charters cannot be scheduled during regular operating hours (Noon–5pm on weekends and holidays, May–September).",
+            "A minimum of 48 hours advance notice is required.",
+            "Pricing starts at $250 for one hour. Each additional hour is $100.",
+            "A 50% deposit is required to hold your date.",
+            "Cancellations within 7 days of the charter date forfeit the deposit."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "page-support",
+      "slug": "support",
+      "name": "Support Us",
+      "status": "published",
+      "updatedAt": "2026-02-10T11:00:00Z",
+      "updatedBy": "Maree Johnston",
+      "blocks": [
+        {
+          "id": "blk-sup-001",
+          "type": "text",
+          "label": "Membership Introduction",
+          "content": "Keep the Trolleys on Track. Becoming a member is a great way to support the trolleys. Membership information and benefits are listed below, updated in honor of the 40th Season of operating as a Heritage Railway."
+        },
+        {
+          "id": "blk-sup-002",
+          "type": "text",
+          "label": "Donation Text",
+          "content": "A great way to support the Trolley is by donating. Your tax-deductible donation helps to preserve the history of the Fort Collins Municipal Railway Society."
+        },
+        {
+          "id": "blk-sup-003",
+          "type": "text",
+          "label": "Volunteer Text",
+          "content": "We're a 100% volunteer-based organization, everything from driving and maintaining the trolleys to grant writing and website building."
+        },
+        {
+          "id": "blk-sup-004",
+          "type": "text",
+          "label": "Advertising Text",
+          "content": "A great way to promote your business is by advertising on a car card inside the Trolleys. The practice of advertising on streetcars started with the first horsecars in the 1890s. It continues today on streetcars, commuter trains and buses."
+        }
+      ]
+    },
+    {
+      "id": "page-about",
+      "slug": "about",
+      "name": "About",
+      "status": "published",
+      "updatedAt": "2026-03-10T08:00:00Z",
+      "updatedBy": "Douglas Gennetten",
+      "blocks": [
+        {
+          "id": "blk-ab-001",
+          "type": "text",
+          "label": "Organization Description",
+          "content": "The Fort Collins Municipal Railway Society (FCMRS) is a 501c3 non-profit corporation working in partnership with the Fort Collins Museum to restore and operate the Fort Collins Municipal Railway, presenting a living history of electric public transportation in Fort Collins."
+        },
+        {
+          "id": "blk-ab-002",
+          "type": "list",
+          "label": "Recognition Awards",
+          "items": [
+            "Department of Transportation Award for Outstanding Public Service to Transportation and Historic Preservation",
+            "Award of Merit from the American Association of State and Local History",
+            "Preservation Honor Award from Colorado Preservation, Inc.",
+            "Stephen H. Hart Award from the Colorado Historical Society",
+            "Designated as a Fort Collins Local Landmark and entered in the National Register of Historic Places"
+          ]
+        },
+        {
+          "id": "blk-ab-003",
+          "type": "officers",
+          "label": "Officers & Directors",
+          "officers": [
+            { "name": "Jim Bowers", "title": "President" },
+            { "name": "John Mol", "title": "Vice President" },
+            { "name": "Douglas Gennetten", "title": "Secretary" },
+            { "name": "Maree Johnston", "title": "Treasurer" }
+          ],
+          "directors": [
+            "Cyrus Bavarian",
+            "Blake Bergersen",
+            "Kreig Larson",
+            "Kathy Rech",
+            "Craig Stith"
+          ]
+        },
+        {
+          "id": "blk-ab-004",
+          "type": "contact",
+          "label": "Contact Information",
+          "organization": "Fort Collins Municipal Railway Society",
+          "address": "330 N Howes, Fort Collins, CO 80521",
+          "email": "info@fortcollinstrolley.org",
+          "hours": "Saturdays, Sundays, & Holidays | Noon - 5pm | May - Sept."
+        },
+        {
+          "id": "blk-ab-005",
+          "type": "list",
+          "label": "Newsletters",
+          "items": [
+            "Vol: 42 • Number 1 • June 2022",
+            "Vol: 42 • Number 2 • September 2022"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "page-history",
+      "slug": "history",
+      "name": "History",
+      "status": "draft",
+      "updatedAt": "2026-03-14T16:00:00Z",
+      "updatedBy": "Douglas Gennetten",
+      "blocks": [
+        {
+          "id": "blk-hi-001",
+          "type": "text",
+          "label": "Birth of the Railway (1907–1951)",
+          "content": "Fort Collins' electric streetcar system began operation in 1907 with a network of routes serving the growing city. The system was operated by the Denver and Interurban Railroad initially, then by the City of Fort Collins beginning in 1919. At its peak, the system included multiple routes connecting neighborhoods to the downtown core. The last regular streetcar service ended in 1951 as buses replaced trolleys across America."
+        },
+        {
+          "id": "blk-hi-002",
+          "type": "text",
+          "label": "Founding of FCMRS (1980)",
+          "content": "The Fort Collins Municipal Railway Society was formed in 1980 by a group of dedicated citizens who envisioned restoring a portion of the original streetcar line as a living history project. Working in partnership with the City of Fort Collins and the Fort Collins Museum, the all-volunteer organization set about the painstaking task of restoring both a historic streetcar and the track to operate it on."
+        },
+        {
+          "id": "blk-hi-003",
+          "type": "text",
+          "label": "Car 21 Restoration (1980–1984)",
+          "content": "The centerpiece of the restoration effort was Car 21, a 1919 Birney Safety Car built by the American Car Company in St. Louis. The seven-year restoration was accomplished entirely by volunteers, with all materials donated by local railroads and businesses. The complete restoration has been appraised at over $2.5 million, yet was accomplished at no cost to the City. The Society even helped salvage rail from local railroads, including an abandoned mountain tourist line in the dead of winter."
+        },
+        {
+          "id": "blk-hi-004",
+          "type": "text",
+          "label": "Recognition & Ongoing Operations (1984–Present)",
+          "content": "Regular weekend trolley service along the restored 1.5-mile Mountain Avenue line began in 1984. In the decades since, the FCMRS has earned multiple awards for historic preservation and public service. Today, the Society operates Cars 21 and 25 on weekends and holidays from May through September, with regular charters available during off-hours. The operation is governed by the Federal Railways Administration, which performs annual safety inspections."
+        }
+      ]
+    }
+  ]
+}

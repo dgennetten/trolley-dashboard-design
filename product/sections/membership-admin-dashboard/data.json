@@ -1,0 +1,449 @@
+{
+  "_meta": {
+    "models": {
+      "DashboardStats": "Summary statistics displayed on the dashboard overview — total members, active volunteers, pending renewals, and new signups this month.",
+      "MemberListItem": "A row in the members table with key fields for filtering and display. Links to the full MemberDetail.",
+      "MemberDetail": "The complete editable record for a single member including contact info, address, membership info, payment history, and volunteer roles with certification status.",
+      "ActivityLogEntry": "A timestamped record of a membership data change shown in the activity feed.",
+      "AdminMessage": "A message in the admin flat message list — can be sent or received, with subject, body, and status.",
+      "LeadDashboard": "A scoped mini-dashboard for a lead's volunteer role group with group stats and a subordinate roster."
+    },
+    "relationships": [
+      "DashboardStats aggregates data across all MemberListItems",
+      "MemberListItem is a summary view of MemberDetail",
+      "ActivityLogEntry references a MemberDetail by memberId",
+      "AdminMessage references a MemberDetail as sender or recipient",
+      "LeadDashboard contains a filtered subset of MemberListItems for one volunteer role"
+    ]
+  },
+  "dashboardStats": {
+    "totalMembers": 347,
+    "activeVolunteers": 168,
+    "pendingRenewals": 42,
+    "newSignupsThisMonth": 8
+  },
+  "members": [
+    {
+      "id": "mbr-001",
+      "firstName": "Sarah",
+      "lastName": "Mitchell",
+      "email": "sarah.mitchell@email.com",
+      "phone": "(970) 555-0142",
+      "address": {
+        "line1": "412 Laurel Street",
+        "line2": "",
+        "city": "Fort Collins",
+        "state": "CO",
+        "zip": "80521"
+      },
+      "membershipLevel": "Mountain Barn",
+      "datePaid": "2025-11-15",
+      "paymentStatus": "current",
+      "paymentMethod": "venmo",
+      "volunteerRoles": [
+        { "role": "Conductor", "certificationStatus": "certified", "certifiedDate": "2025-04-12", "isLead": false }
+      ],
+      "lastLogin": "2026-03-14T09:22:00Z",
+      "joinDate": "2020-03-01"
+    },
+    {
+      "id": "mbr-002",
+      "firstName": "Craig",
+      "lastName": "Stith",
+      "email": "craig.stith@email.com",
+      "phone": "(970) 555-0198",
+      "address": {
+        "line1": "1800 Remington Street",
+        "line2": "Apt 3B",
+        "city": "Fort Collins",
+        "state": "CO",
+        "zip": "80525"
+      },
+      "membershipLevel": "Howes Barn",
+      "datePaid": "2026-01-10",
+      "paymentStatus": "current",
+      "paymentMethod": "check",
+      "volunteerRoles": [
+        { "role": "Conductor", "certificationStatus": "certified", "certifiedDate": "2025-04-08", "isLead": true },
+        { "role": "Board Member", "certificationStatus": "not_applicable", "certifiedDate": null, "isLead": false }
+      ],
+      "lastLogin": "2026-03-13T16:45:00Z",
+      "joinDate": "2015-06-01"
+    },
+    {
+      "id": "mbr-003",
+      "firstName": "Jim",
+      "lastName": "Bowers",
+      "email": "jim.bowers@email.com",
+      "phone": "(970) 555-0177",
+      "address": {
+        "line1": "925 City Park Avenue",
+        "line2": "",
+        "city": "Fort Collins",
+        "state": "CO",
+        "zip": "80521"
+      },
+      "membershipLevel": "Lifetime",
+      "datePaid": "2018-01-15",
+      "paymentStatus": "lifetime",
+      "paymentMethod": "check",
+      "volunteerRoles": [
+        { "role": "Board Member", "certificationStatus": "not_applicable", "certifiedDate": null, "isLead": false },
+        { "role": "Motorman", "certificationStatus": "certified", "certifiedDate": "2025-04-20", "isLead": false }
+      ],
+      "lastLogin": "2026-03-14T11:30:00Z",
+      "joinDate": "2010-01-15"
+    },
+    {
+      "id": "mbr-004",
+      "firstName": "Maree",
+      "lastName": "Johnston",
+      "email": "maree.johnston@email.com",
+      "phone": "(970) 555-0211",
+      "address": {
+        "line1": "508 West Olive Street",
+        "line2": "",
+        "city": "Fort Collins",
+        "state": "CO",
+        "zip": "80521"
+      },
+      "membershipLevel": "Howes Barn",
+      "datePaid": "2026-01-05",
+      "paymentStatus": "current",
+      "paymentMethod": "paypal",
+      "volunteerRoles": [
+        { "role": "Board Member", "certificationStatus": "not_applicable", "certifiedDate": null, "isLead": false },
+        { "role": "Depot Staff", "certificationStatus": "certified", "certifiedDate": "2025-05-01", "isLead": true }
+      ],
+      "lastLogin": "2026-03-12T08:15:00Z",
+      "joinDate": "2012-04-01"
+    },
+    {
+      "id": "mbr-005",
+      "firstName": "David",
+      "lastName": "Chen",
+      "email": "david.chen@email.com",
+      "phone": "(970) 555-0289",
+      "address": {
+        "line1": "1402 South College Avenue",
+        "line2": "Suite 200",
+        "city": "Fort Collins",
+        "state": "CO",
+        "zip": "80524"
+      },
+      "membershipLevel": "Mountain Barn",
+      "datePaid": "2025-05-20",
+      "paymentStatus": "past_due",
+      "paymentMethod": "venmo",
+      "volunteerRoles": [
+        { "role": "Mechanic", "certificationStatus": "needs_recertification", "certifiedDate": "2024-04-15", "isLead": false }
+      ],
+      "lastLogin": "2026-02-28T14:00:00Z",
+      "joinDate": "2022-05-20"
+    },
+    {
+      "id": "mbr-006",
+      "firstName": "Patricia",
+      "lastName": "Waverly",
+      "email": "pat.waverly@email.com",
+      "phone": "(970) 555-0334",
+      "address": {
+        "line1": "2201 Kechter Road",
+        "line2": "",
+        "city": "Fort Collins",
+        "state": "CO",
+        "zip": "80528"
+      },
+      "membershipLevel": "Depot",
+      "datePaid": "2025-09-01",
+      "paymentStatus": "past_due",
+      "paymentMethod": "check",
+      "volunteerRoles": [],
+      "lastLogin": "2025-12-10T10:00:00Z",
+      "joinDate": "2024-09-01"
+    },
+    {
+      "id": "mbr-007",
+      "firstName": "Robert",
+      "lastName": "Tanaka",
+      "email": "robert.tanaka@email.com",
+      "phone": "(970) 555-0401",
+      "address": {
+        "line1": "740 West Mountain Avenue",
+        "line2": "",
+        "city": "Fort Collins",
+        "state": "CO",
+        "zip": "80521"
+      },
+      "membershipLevel": "Mountain Barn",
+      "datePaid": "2026-02-28",
+      "paymentStatus": "current",
+      "paymentMethod": "venmo",
+      "volunteerRoles": [
+        { "role": "Motorman", "certificationStatus": "certified", "certifiedDate": "2025-04-22", "isLead": true }
+      ],
+      "lastLogin": "2026-03-14T07:50:00Z",
+      "joinDate": "2017-08-01"
+    },
+    {
+      "id": "mbr-008",
+      "firstName": "Emily",
+      "lastName": "Nguyen",
+      "email": "emily.nguyen@email.com",
+      "phone": "(970) 555-0456",
+      "address": {
+        "line1": "1105 Springfield Drive",
+        "line2": "",
+        "city": "Fort Collins",
+        "state": "CO",
+        "zip": "80521"
+      },
+      "membershipLevel": "Depot",
+      "datePaid": "2026-03-01",
+      "paymentStatus": "current",
+      "paymentMethod": "paypal",
+      "volunteerRoles": [
+        { "role": "Conductor", "certificationStatus": "needs_recertification", "certifiedDate": "2024-05-10", "isLead": false }
+      ],
+      "lastLogin": "2026-03-10T13:20:00Z",
+      "joinDate": "2023-03-01"
+    },
+    {
+      "id": "mbr-009",
+      "firstName": "Marcus",
+      "lastName": "Williams",
+      "email": "marcus.williams@email.com",
+      "phone": "(970) 555-0512",
+      "address": {
+        "line1": "305 North Howes Street",
+        "line2": "",
+        "city": "Fort Collins",
+        "state": "CO",
+        "zip": "80521"
+      },
+      "membershipLevel": "Howes Barn",
+      "datePaid": "2026-01-20",
+      "paymentStatus": "current",
+      "paymentMethod": "check",
+      "volunteerRoles": [
+        { "role": "Mechanic", "certificationStatus": "certified", "certifiedDate": "2025-04-18", "isLead": true },
+        { "role": "Motorman", "certificationStatus": "certified", "certifiedDate": "2025-04-22", "isLead": false }
+      ],
+      "lastLogin": "2026-03-13T10:00:00Z",
+      "joinDate": "2016-02-01"
+    },
+    {
+      "id": "mbr-010",
+      "firstName": "Linda",
+      "lastName": "Foster",
+      "email": "linda.foster@email.com",
+      "phone": "(970) 555-0578",
+      "address": {
+        "line1": "890 East Elizabeth Street",
+        "line2": "Unit 12",
+        "city": "Fort Collins",
+        "state": "CO",
+        "zip": "80524"
+      },
+      "membershipLevel": "Lifetime",
+      "datePaid": "2019-06-15",
+      "paymentStatus": "lifetime",
+      "paymentMethod": "check",
+      "volunteerRoles": [
+        { "role": "Depot Staff", "certificationStatus": "certified", "certifiedDate": "2025-05-03", "isLead": false }
+      ],
+      "lastLogin": "2026-03-11T15:45:00Z",
+      "joinDate": "2013-06-15"
+    }
+  ],
+  "activityLog": [
+    {
+      "id": "act-001",
+      "type": "new_member",
+      "description": "New member signed up",
+      "memberName": "Emily Nguyen",
+      "memberId": "mbr-008",
+      "timestamp": "2026-03-01T10:15:00Z",
+      "performedBy": null
+    },
+    {
+      "id": "act-002",
+      "type": "renewal",
+      "description": "Membership renewed (Mountain Barn)",
+      "memberName": "Robert Tanaka",
+      "memberId": "mbr-007",
+      "timestamp": "2026-02-28T14:30:00Z",
+      "performedBy": null
+    },
+    {
+      "id": "act-003",
+      "type": "payment",
+      "description": "Payment received via Venmo — $50.00",
+      "memberName": "Robert Tanaka",
+      "memberId": "mbr-007",
+      "timestamp": "2026-02-28T14:30:00Z",
+      "performedBy": null
+    },
+    {
+      "id": "act-004",
+      "type": "role_change",
+      "description": "Volunteer role added: Mechanic",
+      "memberName": "David Chen",
+      "memberId": "mbr-005",
+      "timestamp": "2026-02-25T09:00:00Z",
+      "performedBy": "Jim Bowers"
+    },
+    {
+      "id": "act-005",
+      "type": "certification",
+      "description": "Certification status changed to 'needs recertification'",
+      "memberName": "David Chen",
+      "memberId": "mbr-005",
+      "timestamp": "2026-02-20T11:00:00Z",
+      "performedBy": "Marcus Williams"
+    },
+    {
+      "id": "act-006",
+      "type": "edit",
+      "description": "Address updated",
+      "memberName": "Patricia Waverly",
+      "memberId": "mbr-006",
+      "timestamp": "2026-02-18T16:45:00Z",
+      "performedBy": "Maree Johnston"
+    },
+    {
+      "id": "act-007",
+      "type": "level_change",
+      "description": "Membership level upgraded from Depot to Mountain Barn",
+      "memberName": "Sarah Mitchell",
+      "memberId": "mbr-001",
+      "timestamp": "2026-02-15T10:20:00Z",
+      "performedBy": null
+    },
+    {
+      "id": "act-008",
+      "type": "renewal",
+      "description": "Membership renewed (Howes Barn)",
+      "memberName": "Marcus Williams",
+      "memberId": "mbr-009",
+      "timestamp": "2026-01-20T08:00:00Z",
+      "performedBy": null
+    },
+    {
+      "id": "act-009",
+      "type": "payment",
+      "description": "Payment received via check — $100.00",
+      "memberName": "Marcus Williams",
+      "memberId": "mbr-009",
+      "timestamp": "2026-01-20T08:00:00Z",
+      "performedBy": null
+    },
+    {
+      "id": "act-010",
+      "type": "certification",
+      "description": "Bulk recertification reset for Conductor group",
+      "memberName": "All Conductors",
+      "memberId": null,
+      "timestamp": "2025-03-15T09:00:00Z",
+      "performedBy": "Craig Stith"
+    },
+    {
+      "id": "act-011",
+      "type": "new_member",
+      "description": "New member signed up",
+      "memberName": "Patricia Waverly",
+      "memberId": "mbr-006",
+      "timestamp": "2024-09-01T12:00:00Z",
+      "performedBy": null
+    },
+    {
+      "id": "act-012",
+      "type": "payment_reminder",
+      "description": "Automated renewal reminder sent",
+      "memberName": "David Chen",
+      "memberId": "mbr-005",
+      "timestamp": "2026-03-10T06:00:00Z",
+      "performedBy": "System"
+    }
+  ],
+  "adminMessages": [
+    {
+      "id": "msg-001",
+      "direction": "received",
+      "fromMemberId": "mbr-001",
+      "fromMemberName": "Sarah Mitchell",
+      "toMemberId": null,
+      "toMemberName": null,
+      "subject": "Question about renewal",
+      "body": "Hi, I renewed in November but my status still shows as due. Can you please check? Thanks!",
+      "status": "unread",
+      "timestamp": "2026-03-14T09:30:00Z"
+    },
+    {
+      "id": "msg-002",
+      "direction": "sent",
+      "fromMemberId": null,
+      "fromMemberName": null,
+      "toMemberId": "mbr-005",
+      "toMemberName": "David Chen",
+      "subject": "Membership renewal past due",
+      "body": "Hi David, this is a friendly reminder that your Mountain Barn membership is past due. Please renew at your convenience through the member portal or by mailing a check. Let me know if you have any questions.",
+      "status": "read",
+      "timestamp": "2026-03-10T10:00:00Z"
+    },
+    {
+      "id": "msg-003",
+      "direction": "received",
+      "fromMemberId": "mbr-008",
+      "fromMemberName": "Emily Nguyen",
+      "toMemberId": null,
+      "toMemberName": null,
+      "subject": "Volunteer interest",
+      "body": "I'm interested in becoming a conductor. What's the process for getting certified? I'm available on weekends starting in May.",
+      "status": "read",
+      "timestamp": "2026-03-08T14:15:00Z"
+    },
+    {
+      "id": "msg-004",
+      "direction": "sent",
+      "fromMemberId": null,
+      "fromMemberName": null,
+      "toMemberId": "mbr-008",
+      "toMemberName": "Emily Nguyen",
+      "subject": "Re: Volunteer interest",
+      "body": "Great to hear, Emily! The certification process involves a training session with our Conductor Lead, Craig Stith. I'll connect you two. Expect to hear from Craig soon.",
+      "status": "read",
+      "timestamp": "2026-03-08T15:45:00Z"
+    },
+    {
+      "id": "msg-005",
+      "direction": "received",
+      "fromMemberId": "mbr-006",
+      "fromMemberName": "Patricia Waverly",
+      "toMemberId": null,
+      "toMemberName": null,
+      "subject": "Address change",
+      "body": "Please update my address to 2201 Kechter Road, Fort Collins, CO 80528. I moved last month. Thanks!",
+      "status": "read",
+      "timestamp": "2026-02-18T16:30:00Z"
+    }
+  ],
+  "leadDashboard": {
+    "leadName": "Craig Stith",
+    "role": "Conductor",
+    "stats": {
+      "totalInGroup": 7,
+      "certified": 4,
+      "needsRecertification": 3
+    },
+    "subordinates": [
+      { "memberId": "mbr-001", "name": "Sarah Mitchell", "certificationStatus": "certified", "certifiedDate": "2025-04-12" },
+      { "memberId": "mbr-008", "name": "Emily Nguyen", "certificationStatus": "needs_recertification", "certifiedDate": "2024-05-10" },
+      { "memberId": "mbr-011", "name": "Tom Redfield", "certificationStatus": "certified", "certifiedDate": "2025-04-14" },
+      { "memberId": "mbr-012", "name": "Angela Ruiz", "certificationStatus": "needs_recertification", "certifiedDate": "2024-04-28" },
+      { "memberId": "mbr-013", "name": "Brian Paulsen", "certificationStatus": "certified", "certifiedDate": "2025-04-20" },
+      { "memberId": "mbr-014", "name": "Janet Kim", "certificationStatus": "certified", "certifiedDate": "2025-05-02" },
+      { "memberId": "mbr-015", "name": "Kevin O'Reilly", "certificationStatus": "needs_recertification", "certifiedDate": "2024-05-15" }
+    ]
+  }
+}

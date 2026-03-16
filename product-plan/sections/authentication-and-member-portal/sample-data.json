@@ -1,0 +1,137 @@
+{
+  "_meta": {
+    "models": {
+      "MemberProfile": "The authenticated member's own profile data including contact information, mailing address, membership details, volunteer roles with certification status, and payment status.",
+      "VolunteerGroup": "A group of volunteers sharing the same role, with their names, certification statuses, and the group lead's contact information.",
+      "Message": "A message sent from the member to a membership admin or volunteer role lead, displayed in the member's Messages inbox.",
+      "PaymentRecord": "A record of a membership payment or renewal, including amount, method, date, and confirmation status."
+    },
+    "relationships": [
+      "MemberProfile has one MembershipLevel and zero or many VolunteerRoles",
+      "VolunteerGroups are derived from the member's active VolunteerRoles — one group per role",
+      "Messages are sent by the member to admin or role lead recipients",
+      "PaymentRecords are associated with the MemberProfile"
+    ]
+  },
+  "memberProfile": {
+    "id": "mbr-042",
+    "firstName": "Sarah",
+    "lastName": "Mitchell",
+    "email": "sarah.mitchell@gmail.com",
+    "phone": "(970) 555-0187",
+    "address": {
+      "line1": "1423 Remington Street",
+      "line2": "Apt B",
+      "city": "Fort Collins",
+      "state": "CO",
+      "zipCode": "80524"
+    },
+    "membershipLevel": {
+      "id": "mountain-barn",
+      "name": "Mountain Barn Level",
+      "price": 50,
+      "period": "year"
+    },
+    "memberSince": "2022-03-15",
+    "datePaid": "2025-04-02",
+    "paymentStatus": "current",
+    "expiresOn": "2026-04-02",
+    "lastLogin": "2026-03-13T19:22:00",
+    "volunteerRoles": [
+      {
+        "role": "Conductor",
+        "certificationStatus": "certified",
+        "isLead": false,
+        "certifiedDate": "2025-05-01"
+      }
+    ]
+  },
+  "volunteerGroups": [
+    {
+      "roleName": "Conductor",
+      "lead": {
+        "name": "Craig Stith",
+        "email": "craig.stith@example.com",
+        "phone": "(970) 555-0234"
+      },
+      "members": [
+        { "id": "mbr-042", "name": "Sarah Mitchell", "certificationStatus": "certified", "certifiedDate": "2025-05-01", "isCurrentUser": true },
+        { "id": "mbr-011", "name": "Tom Reinhardt", "certificationStatus": "certified", "certifiedDate": "2025-05-03", "isCurrentUser": false },
+        { "id": "mbr-019", "name": "Lisa Chen", "certificationStatus": "needs_recertification", "certifiedDate": null, "isCurrentUser": false },
+        { "id": "mbr-027", "name": "Mark Johansson", "certificationStatus": "certified", "certifiedDate": "2025-05-08", "isCurrentUser": false },
+        { "id": "mbr-033", "name": "Angela Torres", "certificationStatus": "certified", "certifiedDate": "2025-04-28", "isCurrentUser": false },
+        { "id": "mbr-051", "name": "David Park", "certificationStatus": "needs_recertification", "certifiedDate": null, "isCurrentUser": false },
+        { "id": "mbr-058", "name": "Rachel Weber", "certificationStatus": "certified", "certifiedDate": "2025-05-10", "isCurrentUser": false }
+      ]
+    }
+  ],
+  "messages": [
+    {
+      "id": "msg-001",
+      "recipientType": "admin",
+      "recipientName": "Membership Admin",
+      "subject": "Address update confirmation",
+      "body": "Hi, I recently updated my mailing address in my profile. Could you confirm the membership card will be sent to the new address?",
+      "sentAt": "2026-03-10T14:30:00",
+      "status": "replied"
+    },
+    {
+      "id": "msg-002",
+      "recipientType": "lead",
+      "recipientName": "Craig Stith (Conductor Lead)",
+      "subject": "Recertification schedule",
+      "body": "When is the recertification training scheduled for this season? I want to make sure I can attend.",
+      "sentAt": "2026-03-12T09:15:00",
+      "status": "read"
+    },
+    {
+      "id": "msg-003",
+      "recipientType": "admin",
+      "recipientName": "Membership Admin",
+      "subject": "Question about lifetime membership upgrade",
+      "body": "I'm thinking about upgrading from Mountain Barn to Lifetime membership. Is there a process for upgrading, and would my current payment apply toward the difference?",
+      "sentAt": "2026-03-14T11:00:00",
+      "status": "sent"
+    }
+  ],
+  "paymentHistory": [
+    {
+      "id": "pay-101",
+      "amount": 50,
+      "method": "stripe",
+      "date": "2025-04-02",
+      "description": "Mountain Barn Level — Annual Renewal",
+      "status": "confirmed"
+    },
+    {
+      "id": "pay-088",
+      "amount": 50,
+      "method": "paypal",
+      "date": "2024-03-28",
+      "description": "Mountain Barn Level — Annual Renewal",
+      "status": "confirmed"
+    },
+    {
+      "id": "pay-065",
+      "amount": 20,
+      "method": "check",
+      "date": "2023-04-10",
+      "description": "Depot Level — Annual Renewal",
+      "status": "confirmed"
+    },
+    {
+      "id": "pay-044",
+      "amount": 20,
+      "method": "venmo",
+      "date": "2022-03-15",
+      "description": "Depot Level — Initial Membership",
+      "status": "confirmed"
+    }
+  ],
+  "availableLevels": [
+    { "id": "depot", "name": "Depot Level", "price": 20, "period": "year" },
+    { "id": "mountain-barn", "name": "Mountain Barn Level", "price": 50, "period": "year" },
+    { "id": "howes-barn", "name": "Howes Barn Level", "price": 100, "period": "year" },
+    { "id": "lifetime", "name": "Lifetime Membership", "price": 500, "period": "one-time" }
+  ]
+}
