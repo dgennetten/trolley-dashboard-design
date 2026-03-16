@@ -26,9 +26,9 @@ A built-in CMS lets authorized admins update public-facing content (hero, notice
 - Membership admin dashboard: filterable list (level, role, cert status, payment status), exports (.doc, .pdf, .csv), activity log
 - Member self-service portal: personal profile and payment status, volunteer group roster and certification statuses, annual/past-due renewal, messaging to admin or role manager
 - New member application form with Venmo/PayPal/check payment options
-- Charter request form (name, email, phone, preferred/secondary dates & times, message) displaying the Charter Lead's phone as the point of contact
-- Volunteer role tracking (Board Member, Motorman, Conductor, Depot Staff, Mechanic, plus Leads for each, and Charter Lead) with certification status; members may hold multiple roles
-- Lead view: leads see an admin dashboard scoped to their subordinates (volunteers in the same role category), with bulk "needs recertification" reset (typically at season start) and individual recertification marking. Charter Lead has no subordinates but is the point of contact shown on the charter request form.
+- Charter request form (name, email, day-of-event phone, preferred/secondary dates & times, message); the requester's phone serves as the point of contact for motormen and staff throughout the charter process
+- Volunteer role tracking (Board Member, Motorman, Conductor, Depot Staff, Mechanic, plus Leads for each) with certification status; members may hold multiple roles
+- Lead view: leads see an admin dashboard scoped to their subordinates (volunteers in the same role category), with bulk "needs recertification" reset (typically at season start) and individual recertification marking
 - Four membership tiers: Depot ($20), Mountain Barn ($50), Howes Barn ($100), Lifetime ($500)
 - Admin CMS for events (dates, descriptions, photos) and site content
 - Automated payment-due notifications via Supabase Edge Functions

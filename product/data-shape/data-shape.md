@@ -9,13 +9,13 @@ A person who has joined the Fort Collins Municipal Railway Society. Holds contac
 A tier of membership with an associated annual cost and set of benefits. The four levels are Depot ($20/year), Mountain Barn ($50/year), Howes Barn ($100/year), and Lifetime ($500 one-time).
 
 ### VolunteerRole
-A role a member can hold as an active volunteer. Roles include Board Member, Motorman, Conductor, Depot Staff, Mechanic, and Charter Lead. Each role tracks certification status and whether the member serves as a lead for that role. Leads see an admin view of all volunteers in their same role category and can bulk-reset all subordinates to "needs recertification" (typically at the start of each season) or individually mark a subordinate as recertified. Charter Lead is a special role with no subordinates; the Charter Lead's phone number is displayed on the public charter request form.
+A role a member can hold as an active volunteer. Roles include Board Member, Motorman, Conductor, Depot Staff, and Mechanic. Each role tracks certification status and whether the member serves as a lead for that role. Leads see an admin view of all volunteers in their same role category and can bulk-reset all subordinates to "needs recertification" (typically at the start of each season) or individually mark a subordinate as recertified.
 
 ### Event
 A public-facing event managed through the admin CMS. Includes a title, date, description, and photos displayed on the public Events page.
 
 ### CharterRequest
-A submission from the public requesting a private trolley charter. Captures contact name, email, day-of-event phone number, preferred and secondary date/time, and a message describing the event. The charter request form displays the Charter Lead's phone number as the point of contact.
+A submission from the public requesting a private trolley charter. Captures contact name, email, day-of-event phone number (used as the point of contact for motormen and staff throughout the charter process), preferred and secondary date/time, and a message describing the event.
 
 ### ContentBlock
 A configurable piece of content on the public website — hero images, temporary notices, or page sections — managed through the admin CMS without requiring code changes.
