@@ -18,18 +18,31 @@ The Fort Collins Trolley application uses a dual-shell architecture: a public to
 ### Portal Shell (Sidebar Navigation)
 
 #### All Members
-- My Profile → /portal/profile
+- My Profile → /portal/profile (membership details, payment status, renewal)
+- My Volunteer Group → /portal/volunteer-group (group roster, certification statuses, lead contact — only visible if member holds a volunteer role)
 - Messages → /portal/messages
 
-#### Supervisors (in addition to member items)
+#### Leads (in addition to member items)
 - My Team → /portal/team
 
-#### Admins (full navigation)
+#### CMS Admins (content only)
+- Content Management → /portal/content
+
+#### Membership Admins (membership only, no content)
 - Dashboard → /portal/dashboard
 - Members → /portal/members
+- Messages → /portal/messages
+- Activity Log → /portal/activity
+- Notifications → /portal/notifications
+
+#### Super Admins (all navigation)
+- Dashboard → /portal/dashboard
+- Members → /portal/members
+- Messages → /portal/messages
 - Activity Log → /portal/activity
 - Content Management → /portal/content
 - Notifications → /portal/notifications
+- Settings → /portal/settings
 
 ## User Menu
 Located in the portal header bar, top-right corner. Displays user avatar (initials fallback), display name, and a dropdown with: My Profile, Settings (future), and Logout.

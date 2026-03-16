@@ -3,19 +3,19 @@
 ## Entities
 
 ### Member
-A person who has joined the Fort Collins Municipal Railway Society. Holds contact information (name, email, phone), full mailing address, membership level, date paid, payment status, and optional volunteer role with certification status.
+A person who has joined the Fort Collins Municipal Railway Society. Holds contact information (name, email, phone), full mailing address, membership level, date paid, payment status, last login timestamp, and optional volunteer role with certification status.
 
 ### MembershipLevel
 A tier of membership with an associated annual cost and set of benefits. The four levels are Depot ($20/year), Mountain Barn ($50/year), Howes Barn ($100/year), and Lifetime ($500 one-time).
 
 ### VolunteerRole
-A role a member can hold as an active volunteer. Roles include Board Member, Motorman, Conductor, Depot Staff, and Mechanic. Each role tracks certification status and whether the member serves as a supervisor for that role. Supervisors see an admin view of all volunteers in their same role category and can bulk-reset all subordinates to "needs recertification" (typically at the start of each season) or individually mark a subordinate as recertified.
+A role a member can hold as an active volunteer. Roles include Board Member, Motorman, Conductor, Depot Staff, Mechanic, and Charter Lead. Each role tracks certification status and whether the member serves as a lead for that role. Leads see an admin view of all volunteers in their same role category and can bulk-reset all subordinates to "needs recertification" (typically at the start of each season) or individually mark a subordinate as recertified. Charter Lead is a special role with no subordinates; the Charter Lead's phone number is displayed on the public charter request form.
 
 ### Event
 A public-facing event managed through the admin CMS. Includes a title, date, description, and photos displayed on the public Events page.
 
 ### CharterRequest
-A submission from the public requesting a private trolley charter. Captures contact name, email, day-of-event phone number, preferred and secondary date/time, and a message describing the event.
+A submission from the public requesting a private trolley charter. Captures contact name, email, day-of-event phone number, preferred and secondary date/time, and a message describing the event. The charter request form displays the Charter Lead's phone number as the point of contact.
 
 ### ContentBlock
 A configurable piece of content on the public website — hero images, temporary notices, or page sections — managed through the admin CMS without requiring code changes.
@@ -30,7 +30,7 @@ A record of a membership payment or donation. Tracks the amount, payment method 
 A communication sent between a member and a membership admin or their volunteer role manager. Supports the in-app messaging feature available from the member portal.
 
 ### UserRole
-A role assigned to a user for access control purposes. Roles are flexible and configurable per user, enabling granular permissions for admin, content management, and member-level access.
+A role assigned to a user for access control purposes. Roles include: member, lead, cms_admin (Content Management access only), membership_admin (Members, Activity Log, Notifications — no Content Management), and super_admin (all areas including Settings). Roles are flexible and configurable per user.
 
 ## Relationships
 

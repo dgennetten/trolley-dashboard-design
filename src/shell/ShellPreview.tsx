@@ -3,18 +3,17 @@ import AppShell from './components/AppShell'
 import type { NavigationItem, AppShellUser } from './components/AppShell'
 import {
   Calendar,
-  Landmark,
   Clock,
-  PartyPopper,
   Heart,
-  Info,
   User,
   MessageSquare,
   Users,
+  UsersRound,
   LayoutDashboard,
   Activity,
   FileEdit,
   Bell,
+  Settings,
 } from 'lucide-react'
 
 const publicNavItems: NavigationItem[] = [
@@ -28,56 +27,77 @@ const publicNavItems: NavigationItem[] = [
 
 const memberNavItems: NavigationItem[] = [
   { label: 'My Profile', href: '/portal/profile', icon: <User className="w-5 h-5" strokeWidth={1.5} />, isActive: true },
+  { label: 'My Volunteer Group', href: '/portal/volunteer-group', icon: <UsersRound className="w-5 h-5" strokeWidth={1.5} /> },
   { label: 'Messages', href: '/portal/messages', icon: <MessageSquare className="w-5 h-5" strokeWidth={1.5} /> },
 ]
 
-const supervisorNavItems: NavigationItem[] = [
+const leadNavItems: NavigationItem[] = [
   { label: 'My Profile', href: '/portal/profile', icon: <User className="w-5 h-5" strokeWidth={1.5} /> },
+  { label: 'My Volunteer Group', href: '/portal/volunteer-group', icon: <UsersRound className="w-5 h-5" strokeWidth={1.5} /> },
   { label: 'Messages', href: '/portal/messages', icon: <MessageSquare className="w-5 h-5" strokeWidth={1.5} /> },
   { label: 'My Team', href: '/portal/team', icon: <Users className="w-5 h-5" strokeWidth={1.5} />, isActive: true },
 ]
 
-const adminNavItems: NavigationItem[] = [
+const cmsAdminNavItems: NavigationItem[] = [
+  { label: 'My Profile', href: '/portal/profile', icon: <User className="w-5 h-5" strokeWidth={1.5} /> },
+  { label: 'Messages', href: '/portal/messages', icon: <MessageSquare className="w-5 h-5" strokeWidth={1.5} /> },
+  { label: 'Content Management', href: '/portal/content', icon: <FileEdit className="w-5 h-5" strokeWidth={1.5} />, isActive: true },
+]
+
+const membershipAdminNavItems: NavigationItem[] = [
   { label: 'Dashboard', href: '/portal/dashboard', icon: <LayoutDashboard className="w-5 h-5" strokeWidth={1.5} />, isActive: true },
   { label: 'Members', href: '/portal/members', icon: <Users className="w-5 h-5" strokeWidth={1.5} /> },
+  { label: 'Messages', href: '/portal/messages', icon: <MessageSquare className="w-5 h-5" strokeWidth={1.5} /> },
+  { label: 'Activity Log', href: '/portal/activity', icon: <Activity className="w-5 h-5" strokeWidth={1.5} /> },
+  { label: 'Notifications', href: '/portal/notifications', icon: <Bell className="w-5 h-5" strokeWidth={1.5} /> },
+]
+
+const superAdminNavItems: NavigationItem[] = [
+  { label: 'Dashboard', href: '/portal/dashboard', icon: <LayoutDashboard className="w-5 h-5" strokeWidth={1.5} />, isActive: true },
+  { label: 'Members', href: '/portal/members', icon: <Users className="w-5 h-5" strokeWidth={1.5} /> },
+  { label: 'Messages', href: '/portal/messages', icon: <MessageSquare className="w-5 h-5" strokeWidth={1.5} /> },
   { label: 'Activity Log', href: '/portal/activity', icon: <Activity className="w-5 h-5" strokeWidth={1.5} /> },
   { label: 'Content Management', href: '/portal/content', icon: <FileEdit className="w-5 h-5" strokeWidth={1.5} /> },
   { label: 'Notifications', href: '/portal/notifications', icon: <Bell className="w-5 h-5" strokeWidth={1.5} /> },
+  { label: 'Settings', href: '/portal/settings', icon: <Settings className="w-5 h-5" strokeWidth={1.5} /> },
 ]
 
 const sampleUser: AppShellUser = {
   name: 'Alex Morgan',
-  role: 'admin',
+  role: 'super_admin',
 }
 
-type PreviewMode = 'public' | 'member' | 'supervisor' | 'admin'
+type PreviewMode = 'public' | 'member' | 'lead' | 'cms_admin' | 'membership_admin' | 'super_admin'
 
 export default function ShellPreview() {
   const [mode, setMode] = useState<PreviewMode>('public')
 
   const variant = mode === 'public' ? 'public' : 'portal'
-  const navItems =
-    mode === 'public'
-      ? publicNavItems
-      : mode === 'member'
-        ? memberNavItems
-        : mode === 'supervisor'
-          ? supervisorNavItems
-          : adminNavItems
+
+  const navMap: Record<PreviewMode, NavigationItem[]> = {
+    public: publicNavItems,
+    member: memberNavItems,
+    lead: leadNavItems,
+    cms_admin: cmsAdminNavItems,
+    membership_admin: membershipAdminNavItems,
+    super_admin: superAdminNavItems,
+  }
+  const navItems = navMap[mode]
 
   const user =
     mode === 'public'
       ? undefined
       : { ...sampleUser, role: mode as AppShellUser['role'] }
 
-  const pageTitle =
-    mode === 'member'
-      ? 'My Profile'
-      : mode === 'supervisor'
-        ? 'My Team'
-        : mode === 'admin'
-          ? 'Dashboard'
-          : undefined
+  const titleMap: Record<PreviewMode, string | undefined> = {
+    public: undefined,
+    member: 'My Profile',
+    lead: 'My Team',
+    cms_admin: 'Content Management',
+    membership_admin: 'Dashboard',
+    super_admin: 'Dashboard',
+  }
+  const pageTitle = titleMap[mode]
 
   return (
     <div className="h-screen flex flex-col">
@@ -86,7 +106,7 @@ export default function ShellPreview() {
         <span className="text-xs font-medium text-stone-400 mr-2 font-['DM_Sans']">
           Preview as:
         </span>
-        {(['public', 'member', 'supervisor', 'admin'] as const).map((m) => (
+        {(['public', 'member', 'lead', 'cms_admin', 'membership_admin', 'super_admin'] as const).map((m) => (
           <button
             key={m}
             onClick={() => setMode(m)}
@@ -96,7 +116,7 @@ export default function ShellPreview() {
                 : 'text-stone-400 hover:text-stone-200 hover:bg-stone-800'
             }`}
           >
-            {m}
+            {m.replace(/_/g, ' ')}
           </button>
         ))}
       </div>
@@ -206,33 +226,92 @@ function PublicContent() {
 }
 
 function PortalContent({ mode }: { mode: string }) {
+  const isAdmin = mode === 'super_admin' || mode === 'membership_admin'
+  const isMemberOrLead = mode === 'member' || mode === 'lead'
+
   return (
     <div className="p-6 lg:p-8">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
-        {[
-          { label: 'Total Members', value: '347', change: '+12 this month' },
-          { label: 'Active Volunteers', value: '168', change: '48% of members' },
-          { label: 'Fees Due', value: '23', change: 'Reminders sent' },
-        ].map(({ label, value, change }) => (
-          <div
-            key={label}
-            className="bg-white dark:bg-stone-900 rounded-xl p-5 border border-stone-200 dark:border-stone-700"
-          >
-            <p className="text-xs font-medium text-stone-500 dark:text-stone-400 uppercase tracking-wide">
-              {label}
-            </p>
-            <p className="text-2xl font-bold text-stone-900 dark:text-stone-100 mt-1 font-['DM_Sans']">
-              {value}
-            </p>
-            <p className="text-xs text-emerald-600 dark:text-emerald-400 mt-1">{change}</p>
+      {/* Admin stats — only for membership_admin and super_admin */}
+      {isAdmin && (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+          {[
+            { label: 'Total Members', value: '347', change: '+12 this month' },
+            { label: 'Active Volunteers', value: '168', change: '48% of members' },
+            { label: 'Fees Due', value: '23', change: 'Reminders sent' },
+          ].map(({ label, value, change }) => (
+            <div
+              key={label}
+              className="bg-white dark:bg-stone-900 rounded-xl p-5 border border-stone-200 dark:border-stone-700"
+            >
+              <p className="text-xs font-medium text-stone-500 dark:text-stone-400 uppercase tracking-wide">
+                {label}
+              </p>
+              <p className="text-2xl font-bold text-stone-900 dark:text-stone-100 mt-1 font-['DM_Sans']">
+                {value}
+              </p>
+              <p className="text-xs text-emerald-600 dark:text-emerald-400 mt-1">{change}</p>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* Member personal info card */}
+      {isMemberOrLead && (
+        <div className="bg-white dark:bg-stone-900 rounded-xl border border-stone-200 dark:border-stone-700 p-5 mb-6">
+          <div className="flex items-start gap-4">
+            <div className="w-14 h-14 rounded-full bg-emerald-100 dark:bg-emerald-900/50 flex items-center justify-center shrink-0">
+              <span className="text-lg font-semibold text-emerald-700 dark:text-emerald-400">AM</span>
+            </div>
+            <div className="flex-1 min-w-0">
+              <h2 className="text-lg font-semibold text-stone-900 dark:text-stone-100 font-['DM_Sans']">Alex Morgan</h2>
+              <p className="text-sm text-stone-500 dark:text-stone-400">Mountain Barn Level &middot; Member since 2023</p>
+              <div className="mt-3 flex flex-wrap gap-2">
+                <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-50 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-400">
+                  Paid through 2026
+                </span>
+                <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-amber-50 dark:bg-amber-950/50 text-amber-700 dark:text-amber-400">
+                  Motorman &middot; Certified
+                </span>
+              </div>
+            </div>
           </div>
-        ))}
-      </div>
+        </div>
+      )}
+
+      {/* Lead team stats */}
+      {mode === 'lead' && (
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+          {[
+            { label: 'Team Size', value: '12', change: 'Motorman group' },
+            { label: 'Certified', value: '9', change: '3 need recertification' },
+            { label: 'Messages', value: '2', change: 'Unread' },
+          ].map(({ label, value, change }) => (
+            <div
+              key={label}
+              className="bg-white dark:bg-stone-900 rounded-xl p-5 border border-stone-200 dark:border-stone-700"
+            >
+              <p className="text-xs font-medium text-stone-500 dark:text-stone-400 uppercase tracking-wide">
+                {label}
+              </p>
+              <p className="text-2xl font-bold text-stone-900 dark:text-stone-100 mt-1 font-['DM_Sans']">
+                {value}
+              </p>
+              <p className="text-xs text-emerald-600 dark:text-emerald-400 mt-1">{change}</p>
+            </div>
+          ))}
+        </div>
+      )}
 
       <div className="bg-white dark:bg-stone-900 rounded-xl border border-stone-200 dark:border-stone-700">
         <div className="px-5 py-4 border-b border-stone-100 dark:border-stone-800">
           <h2 className="text-base font-semibold text-stone-900 dark:text-stone-100 font-['DM_Sans']">
-            {mode === 'admin' ? 'Recent Activity' : mode === 'supervisor' ? 'Team Members' : 'My Details'}
+            {isAdmin
+              ? 'Recent Activity'
+              : mode === 'cms_admin'
+                ? 'Content Blocks'
+                : mode === 'lead'
+                  ? 'Team Members'
+                  : 'My Volunteer Group'}
           </h2>
         </div>
         <div className="divide-y divide-stone-100 dark:divide-stone-800">

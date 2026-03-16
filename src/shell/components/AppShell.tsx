@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { MainNav } from './MainNav'
 import { Sidebar } from './Sidebar'
 import { UserMenu } from './UserMenu'
-import { Menu, X } from 'lucide-react'
+import { Menu } from 'lucide-react'
 
 export interface NavigationItem {
   label: string
@@ -14,7 +14,7 @@ export interface NavigationItem {
 export interface AppShellUser {
   name: string
   avatarUrl?: string
-  role?: 'member' | 'supervisor' | 'admin'
+  role?: 'member' | 'lead' | 'cms_admin' | 'membership_admin' | 'super_admin'
 }
 
 interface AppShellProps {
