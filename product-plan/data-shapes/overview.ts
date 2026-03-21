@@ -63,7 +63,10 @@ export interface CharterInfo {
   title: string
   description: string
   policies: string[]
+  charterLeadPhone?: string
 }
+
+export type CharterRouteEndpoint = 'city_park_depot' | 'howes_st_joseph'
 
 export interface CharterRequestFormData {
   firstName: string
@@ -75,6 +78,11 @@ export interface CharterRequestFormData {
   secondaryDate?: string
   secondaryTime?: string
   message: string
+  charterRouteEndpoint: CharterRouteEndpoint | ''
+  ackNoDrinkEatSmoke: boolean
+  ackNotAdaCompliant: boolean
+  ackDecorationsBluePaintersTape: boolean
+  ackWeatherOrTrolleyCoordination: boolean
 }
 
 export type MembershipPeriod = 'year' | 'one-time'

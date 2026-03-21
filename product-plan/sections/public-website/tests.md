@@ -92,8 +92,11 @@ const scheduleInfo: ScheduleInfo = {
 ### Charter Request Modal
 
 - [ ] "Request a Charter" button opens the modal
+- [ ] Modal shows operating copy (sunrise–sunset, 1-hour minimum, two round trips vs one slow trip)
+- [ ] "Where would you like your charter to start and end?" as a **radio pair** (City Park depot **or** Howes St. / St. Joseph’s); submit blocked until one is selected
 - [ ] Modal contains fields: first name, last name, email, phone, preferred date, preferred time, secondary date (optional), secondary time (optional), message
-- [ ] Submitting with all required fields filled calls `onSubmitCharterRequest` with correct `CharterRequestFormData`
+- [ ] Four required acknowledgment checkboxes (no drink/eat/smoke; ADA/steps; blue painter’s tape decorations; weather/trolley motorman may call)
+- [ ] Submitting with all required fields and acknowledgments calls `onSubmitCharterRequest` with correct `CharterRequestFormData` (including booleans)
 - [ ] Submitting with missing required fields shows validation errors (e.g., "Email is required")
 - [ ] Phone field validates format
 - [ ] Cancel / close button dismisses the modal without calling the callback
@@ -108,10 +111,15 @@ const charterRequest: CharterRequestFormData = {
   email: "jane@example.com",
   phone: "970-555-1234",
   preferredDate: "2025-07-04",
-  preferredTime: "2:00 PM",
+  preferredTime: "14:00",
   secondaryDate: "2025-07-05",
-  secondaryTime: "10:00 AM",
+  secondaryTime: "10:00",
   message: "Birthday party for 25 guests, would love the full loop.",
+  charterRouteEndpoint: "city_park_depot",
+  ackNoDrinkEatSmoke: true,
+  ackNotAdaCompliant: true,
+  ackDecorationsBluePaintersTape: true,
+  ackWeatherOrTrolleyCoordination: true,
 };
 ```
 
