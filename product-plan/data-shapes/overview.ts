@@ -78,7 +78,8 @@ export interface CharterRequestFormData {
   secondaryDate?: string
   secondaryTime?: string
   message: string
-  charterRouteEndpoint: CharterRouteEndpoint | ''
+  pickupLocation: CharterRouteEndpoint | ''
+  dropoffLocation: CharterRouteEndpoint | ''
   ackNoDrinkEatSmoke: boolean
   ackNotAdaCompliant: boolean
   ackDecorationsBluePaintersTape: boolean

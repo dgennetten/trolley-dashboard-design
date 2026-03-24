@@ -34,7 +34,8 @@ const EMPTY_FORM: CharterRequestFormData = {
   secondaryDate: '',
   secondaryTime: '',
   message: '',
-  charterRouteEndpoint: '',
+  pickupLocation: '',
+  dropoffLocation: '',
   ackNoDrinkEatSmoke: false,
   ackNotAdaCompliant: false,
   ackDecorationsBluePaintersTape: false,
@@ -50,12 +51,12 @@ export function ChartersPage({
 }: ChartersPageProps) {
   const [modalOpen, setModalOpen] = useState(false)
   const [form, setForm] = useState<CharterRequestFormData>({ ...EMPTY_FORM })
-  const [routeError, setRouteError] = useState(false)
+  const [locationError, setLocationError] = useState(false)
 
   const closeModal = useCallback(() => {
     setModalOpen(false)
     setForm({ ...EMPTY_FORM })
-    setRouteError(false)
+    setLocationError(false)
   }, [])
 
   useEffect(() => {
@@ -80,18 +81,18 @@ export function ChartersPage({
     value: CharterRequestFormData[K]
   ) => {
     setForm((prev) => ({ ...prev, [field]: value }))
-    if (field === 'charterRouteEndpoint') {
-      setRouteError(false)
+    if (field === 'pickupLocation' || field === 'dropoffLocation') {
+      setLocationError(false)
     }
   }
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    if (!form.charterRouteEndpoint) {
-      setRouteError(true)
+    if (!form.pickupLocation || !form.dropoffLocation) {
+      setLocationError(true)
       return
     }
-    setRouteError(false)
+    setLocationError(false)
     onSubmitCharterRequest?.(form)
     setForm({ ...EMPTY_FORM })
     setModalOpen(false)
@@ -281,48 +282,79 @@ export function ChartersPage({
                   </p>
                 </div>
 
-                {/* Start / end — mutually exclusive (radio pair) */}
-                <fieldset className="space-y-3 min-w-0">
-                  <legend
-                    id="charter-route-legend"
-                    className="flex items-center gap-2 text-sm font-semibold text-stone-900 dark:text-stone-100 font-['DM_Sans'] mb-1"
-                  >
-                    <MapPin className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" strokeWidth={1.5} />
-                    Where would you like your charter to start and end?
-                  </legend>
-                  <p className="text-xs text-stone-500 dark:text-stone-400 mb-2">
-                    Choose one. This tells us which end of the line to prioritize for your charter.
-                  </p>
-                  <div
-                    className="space-y-2"
-                    role="radiogroup"
-                    aria-labelledby="charter-route-legend"
-                  >
-                    <CharterRouteRadioRow
-                      id="charter-route-city-park"
-                      name="charterRouteEndpoint"
-                      value="city_park_depot"
-                      checked={form.charterRouteEndpoint === 'city_park_depot'}
-                      onSelect={() => patchForm('charterRouteEndpoint', 'city_park_depot')}
-                    >
-                      Trolley Depot in City Park
-                    </CharterRouteRadioRow>
-                    <CharterRouteRadioRow
-                      id="charter-route-howes"
-                      name="charterRouteEndpoint"
-                      value="howes_st_joseph"
-                      checked={form.charterRouteEndpoint === 'howes_st_joseph'}
-                      onSelect={() => patchForm('charterRouteEndpoint', 'howes_st_joseph')}
-                    >
-                      Howes Street in front of St. Joseph&apos;s Catholic Parish
-                    </CharterRouteRadioRow>
+                {/* Pick-up and drop-off — independent radio pairs (can match or differ) */}
+                <div className="space-y-5 min-w-0">
+                  <div className="flex items-start gap-2">
+                    <MapPin className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" strokeWidth={1.5} />
+                    <p className="text-xs text-stone-500 dark:text-stone-400 leading-relaxed">
+                      Choose where passengers <span className="font-medium text-stone-600 dark:text-stone-300">board</span> and where the charter <span className="font-medium text-stone-600 dark:text-stone-300">ends</span>. You may use the same stop for both (e.g. depot to depot), or ride between the depot and Howes Street in either direction.
+                    </p>
                   </div>
-                  {routeError && (
+
+                  <fieldset className="space-y-2 min-w-0">
+                    <legend
+                      id="charter-pickup-legend"
+                      className="text-sm font-semibold text-stone-900 dark:text-stone-100 font-['DM_Sans'] mb-2 block w-full"
+                    >
+                      Pick up location
+                    </legend>
+                    <div className="space-y-2" role="radiogroup" aria-labelledby="charter-pickup-legend">
+                      <CharterRouteRadioRow
+                        id="charter-pickup-city-park"
+                        name="pickupLocation"
+                        value="city_park_depot"
+                        checked={form.pickupLocation === 'city_park_depot'}
+                        onSelect={() => patchForm('pickupLocation', 'city_park_depot')}
+                      >
+                        Trolley Depot in City Park
+                      </CharterRouteRadioRow>
+                      <CharterRouteRadioRow
+                        id="charter-pickup-howes"
+                        name="pickupLocation"
+                        value="howes_st_joseph"
+                        checked={form.pickupLocation === 'howes_st_joseph'}
+                        onSelect={() => patchForm('pickupLocation', 'howes_st_joseph')}
+                      >
+                        Howes Street in front of St. Joseph&apos;s Catholic Parish
+                      </CharterRouteRadioRow>
+                    </div>
+                  </fieldset>
+
+                  <fieldset className="space-y-2 min-w-0">
+                    <legend
+                      id="charter-dropoff-legend"
+                      className="text-sm font-semibold text-stone-900 dark:text-stone-100 font-['DM_Sans'] mb-2 block w-full"
+                    >
+                      Drop off location
+                    </legend>
+                    <div className="space-y-2" role="radiogroup" aria-labelledby="charter-dropoff-legend">
+                      <CharterRouteRadioRow
+                        id="charter-dropoff-city-park"
+                        name="dropoffLocation"
+                        value="city_park_depot"
+                        checked={form.dropoffLocation === 'city_park_depot'}
+                        onSelect={() => patchForm('dropoffLocation', 'city_park_depot')}
+                      >
+                        Trolley Depot in City Park
+                      </CharterRouteRadioRow>
+                      <CharterRouteRadioRow
+                        id="charter-dropoff-howes"
+                        name="dropoffLocation"
+                        value="howes_st_joseph"
+                        checked={form.dropoffLocation === 'howes_st_joseph'}
+                        onSelect={() => patchForm('dropoffLocation', 'howes_st_joseph')}
+                      >
+                        Howes Street in front of St. Joseph&apos;s Catholic Parish
+                      </CharterRouteRadioRow>
+                    </div>
+                  </fieldset>
+
+                  {locationError && (
                     <p className="text-sm text-red-600 dark:text-red-400" role="alert">
-                      Please choose one location for your charter.
+                      Please choose both a pick-up location and a drop-off location.
                     </p>
                   )}
-                </fieldset>
+                </div>
 
                 {/* Name row */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

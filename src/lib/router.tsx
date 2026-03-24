@@ -1,4 +1,4 @@
-import { createBrowserRouter } from 'react-router-dom'
+import { createBrowserRouter, Navigate } from 'react-router-dom'
 import { ProductPage } from '@/components/ProductPage'
 import { DataShapePage } from '@/components/DataShapePage'
 import { DesignPage } from '@/components/DesignPage'
@@ -48,5 +48,15 @@ export const router = createBrowserRouter([
   {
     path: '/export',
     element: <ExportPage />,
+  },
+  // Shortcuts for “product” URLs used in shell previews (Design OS has no top-level /charters route otherwise)
+  {
+    path: '/charters',
+    element: (
+      <Navigate
+        to="/sections/public-website/screen-designs/ChartersPage"
+        replace
+      />
+    ),
   },
 ])

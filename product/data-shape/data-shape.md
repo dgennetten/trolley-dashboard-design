@@ -15,7 +15,7 @@ A role a member can hold as an active volunteer. Roles include Board Member, Mot
 A public-facing event managed through the admin CMS. Includes a title, date, description, and photos displayed on the public Events page.
 
 ### CharterRequest
-A submission from the public requesting a private trolley charter. Captures contact name, email, day-of-event phone number (used as the point of contact for motormen and staff throughout the charter process), preferred and secondary date/time, a message describing the event, a **single** selected route endpoint (City Park depot **or** Howes Street at St. Joseph’s), and required acknowledgments (no drink/eat/smoke on board; not ADA compliant / three steps; decorations with blue painter’s tape only and removed after; weather or equipment issues may require coordination by phone).
+A submission from the public requesting a private trolley charter. Captures contact name, email, day-of-event phone number (used as the point of contact for motormen and staff throughout the charter process), preferred and secondary date/time, a message describing the event, **pick-up** and **drop-off** stops (each is City Park depot or Howes Street at St. Joseph’s — they may match or differ), and required acknowledgments (no drink/eat/smoke on board; not ADA compliant / three steps; decorations with blue painter’s tape only and removed after; weather or equipment issues may require coordination by phone).
 
 ### ContentBlock
 A configurable piece of content on the public website — hero images, temporary notices, or page sections — managed through the admin CMS without requiring code changes.

@@ -93,7 +93,7 @@ const scheduleInfo: ScheduleInfo = {
 
 - [ ] "Request a Charter" button opens the modal
 - [ ] Modal shows operating copy (sunrise–sunset, 1-hour minimum, two round trips vs one slow trip)
-- [ ] "Where would you like your charter to start and end?" as a **radio pair** (City Park depot **or** Howes St. / St. Joseph’s); submit blocked until one is selected
+- [ ] Separate **Pick up location** and **Drop off location** radio pairs (each: City Park depot **or** Howes St. / St. Joseph’s); submit blocked until both are selected; same stop may be chosen for both or opposite ends
 - [ ] Modal contains fields: first name, last name, email, phone, preferred date, preferred time, secondary date (optional), secondary time (optional), message
 - [ ] Four required acknowledgment checkboxes (no drink/eat/smoke; ADA/steps; blue painter’s tape decorations; weather/trolley motorman may call)
 - [ ] Submitting with all required fields and acknowledgments calls `onSubmitCharterRequest` with correct `CharterRequestFormData` (including booleans)
@@ -115,7 +115,8 @@ const charterRequest: CharterRequestFormData = {
   secondaryDate: "2025-07-05",
   secondaryTime: "10:00",
   message: "Birthday party for 25 guests, would love the full loop.",
-  charterRouteEndpoint: "city_park_depot",
+  pickupLocation: "city_park_depot",
+  dropoffLocation: "howes_st_joseph",
   ackNoDrinkEatSmoke: true,
   ackNotAdaCompliant: true,
   ackDecorationsBluePaintersTape: true,

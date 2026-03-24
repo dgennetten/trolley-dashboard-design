@@ -55,7 +55,7 @@ export interface CharterInfo {
   charterLeadPhone?: string
 }
 
-/** Which end of the line the charter primarily starts/ends at (mutually exclusive). */
+/** Stops on the line for charter pick-up or drop-off. */
 export type CharterRouteEndpoint = 'city_park_depot' | 'howes_st_joseph'
 
 export interface CharterRequestFormData {
@@ -68,8 +68,10 @@ export interface CharterRequestFormData {
   secondaryDate?: string
   secondaryTime?: string
   message: string
-  /** Empty until user selects one option in the modal. */
-  charterRouteEndpoint: CharterRouteEndpoint | ''
+  /** Empty until user selects pick-up stop (can match or differ from drop-off). */
+  pickupLocation: CharterRouteEndpoint | ''
+  /** Empty until user selects drop-off stop. */
+  dropoffLocation: CharterRouteEndpoint | ''
   ackNoDrinkEatSmoke: boolean
   ackNotAdaCompliant: boolean
   ackDecorationsBluePaintersTape: boolean

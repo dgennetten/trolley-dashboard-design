@@ -1,0 +1,10 @@
+# SPA fallback for static deploys (Apache)
+# Copied to dist/ on `npm run build`. Ensures client-side routes load index.html.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /index.html [L]
+</IfModule>
