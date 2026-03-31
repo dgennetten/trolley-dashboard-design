@@ -1,5 +1,5 @@
 export type PaymentStatus = 'current' | 'past_due' | 'lifetime'
-export type PaymentMethod = 'venmo' | 'paypal' | 'check'
+export type PaymentMethod = 'card' | 'paypal' | 'venmo'
 export type CertificationStatus = 'certified' | 'needs_recertification' | 'not_applicable'
 export type ActivityType = 'new_member' | 'renewal' | 'payment' | 'role_change' | 'certification' | 'edit' | 'level_change' | 'payment_reminder'
 export type MessageDirection = 'sent' | 'received'

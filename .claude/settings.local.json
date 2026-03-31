@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s \"https://buildermethods.com\")",
+      "WebSearch",
+      "WebFetch(domain:buildermethods.com)",
+      "WebFetch(domain:oozou.com)"
+    ]
+  }
+}

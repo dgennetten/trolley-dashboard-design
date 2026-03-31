@@ -6,7 +6,7 @@ export type MessageStatus = 'sent' | 'read' | 'replied'
 
 export type MessageRecipientType = 'admin' | 'lead'
 
-export type PaymentMethod = 'venmo' | 'paypal' | 'check' | 'stripe'
+export type PaymentMethod = 'card' | 'paypal' | 'venmo'
 
 export type PaymentRecordStatus = 'pending' | 'confirmed' | 'failed'
 

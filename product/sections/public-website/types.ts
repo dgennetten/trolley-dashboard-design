@@ -89,7 +89,7 @@ export interface MembershipLevel {
   benefits: string[]
 }
 
-export type PaymentMethod = 'venmo' | 'paypal' | 'check'
+export type BraintreePaymentMethod = 'card' | 'paypal' | 'venmo'
 
 export interface MemberSignupFormData {
   firstName: string
@@ -102,7 +102,9 @@ export interface MemberSignupFormData {
   state: string
   zipCode: string
   membershipLevelId: string
-  paymentMethod: PaymentMethod
+  /** Braintree payment nonce returned by Drop-in UI */
+  braintreeNonce: string
+  paymentMethod: BraintreePaymentMethod
 }
 
 export type SupportOptionIcon = 'heart' | 'users' | 'megaphone' | 'partyPopper'
@@ -144,11 +146,9 @@ export interface AboutContent {
   hours: string
 }
 
-export interface PaymentOptions {
-  venmoUrl: string
-  paypalUrl: string
-  checkPayableTo: string
-  checkMailTo: string
+export interface BraintreeConfig {
+  /** Client token from Braintree server SDK (used to initialize Drop-in UI) */
+  clientToken: string
 }
 
 export interface PublicWebsiteProps {
@@ -159,7 +159,7 @@ export interface PublicWebsiteProps {
   membershipLevels: MembershipLevel[]
   supportOptions: SupportOption[]
   aboutContent: AboutContent
-  paymentOptions: PaymentOptions
+  braintreeConfig: BraintreeConfig
 
   /** Navigate to an internal route */
   onNavigate?: (href: string) => void
@@ -167,8 +167,8 @@ export interface PublicWebsiteProps {
   onLogin?: () => void
   /** Submit a charter request form */
   onSubmitCharterRequest?: (data: CharterRequestFormData) => void
-  /** Submit a new member signup form */
+  /** Submit a new member signup form with Braintree payment nonce */
   onSubmitMemberSignup?: (data: MemberSignupFormData) => void
-  /** Open an external donation link (Venmo or PayPal) */
-  onDonate?: (method: PaymentMethod) => void
+  /** Submit a donation with Braintree payment nonce and amount */
+  onDonate?: (nonce: string, amount: number) => void
 }

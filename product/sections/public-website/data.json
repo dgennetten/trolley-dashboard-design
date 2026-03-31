@@ -222,10 +222,7 @@
     },
     "hours": "Saturdays, Sundays, & Holidays | Noon - 5pm | May - Sept."
   },
-  "paymentOptions": {
-    "venmoUrl": "https://venmo.com/fortcollinstrolley",
-    "paypalUrl": "https://paypal.me/fortcollinstrolley",
-    "checkPayableTo": "Fort Collins Municipal Railway Society",
-    "checkMailTo": "330 N. Howes Street, Fort Collins, CO 80521"
+  "braintreeConfig": {
+    "clientToken": "sandbox_braintree_client_token_placeholder"
   }
 }

@@ -62,7 +62,7 @@
       "membershipLevel": "Howes Barn",
       "datePaid": "2026-01-10",
       "paymentStatus": "current",
-      "paymentMethod": "check",
+      "paymentMethod": "card",
       "volunteerRoles": [
         { "role": "Conductor", "certificationStatus": "certified", "certifiedDate": "2025-04-08", "isLead": true },
         { "role": "Board Member", "certificationStatus": "not_applicable", "certifiedDate": null, "isLead": false }
@@ -86,7 +86,7 @@
       "membershipLevel": "Lifetime",
       "datePaid": "2018-01-15",
       "paymentStatus": "lifetime",
-      "paymentMethod": "check",
+      "paymentMethod": "card",
       "volunteerRoles": [
         { "role": "Board Member", "certificationStatus": "not_applicable", "certifiedDate": null, "isLead": false },
         { "role": "Motorman", "certificationStatus": "certified", "certifiedDate": "2025-04-20", "isLead": false }
@@ -157,7 +157,7 @@
       "membershipLevel": "Depot",
       "datePaid": "2025-09-01",
       "paymentStatus": "past_due",
-      "paymentMethod": "check",
+      "paymentMethod": "card",
       "volunteerRoles": [],
       "lastLogin": "2025-12-10T10:00:00Z",
       "joinDate": "2024-09-01"
@@ -224,7 +224,7 @@
       "membershipLevel": "Howes Barn",
       "datePaid": "2026-01-20",
       "paymentStatus": "current",
-      "paymentMethod": "check",
+      "paymentMethod": "card",
       "volunteerRoles": [
         { "role": "Mechanic", "certificationStatus": "certified", "certifiedDate": "2025-04-18", "isLead": true },
         { "role": "Motorman", "certificationStatus": "certified", "certifiedDate": "2025-04-22", "isLead": false }
@@ -248,7 +248,7 @@
       "membershipLevel": "Lifetime",
       "datePaid": "2019-06-15",
       "paymentStatus": "lifetime",
-      "paymentMethod": "check",
+      "paymentMethod": "card",
       "volunteerRoles": [
         { "role": "Depot Staff", "certificationStatus": "certified", "certifiedDate": "2025-05-03", "isLead": false }
       ],
@@ -278,7 +278,7 @@
     {
       "id": "act-003",
       "type": "payment",
-      "description": "Payment received via Venmo — $50.00",
+      "description": "Payment received via Braintree (Venmo) — $50.00",
       "memberName": "Robert Tanaka",
       "memberId": "mbr-007",
       "timestamp": "2026-02-28T14:30:00Z",
@@ -332,7 +332,7 @@
     {
       "id": "act-009",
       "type": "payment",
-      "description": "Payment received via check — $100.00",
+      "description": "Payment received via Braintree (card) — $100.00",
       "memberName": "Marcus Williams",
       "memberId": "mbr-009",
       "timestamp": "2026-01-20T08:00:00Z",
@@ -387,7 +387,7 @@
       "toMemberId": "mbr-005",
       "toMemberName": "David Chen",
       "subject": "Membership renewal past due",
-      "body": "Hi David, this is a friendly reminder that your Mountain Barn membership is past due. Please renew at your convenience through the member portal or by mailing a check. Let me know if you have any questions.",
+      "body": "Hi David, this is a friendly reminder that your Mountain Barn membership is past due. Please renew at your convenience through the member portal using a credit/debit card, PayPal, or Venmo via our secure Braintree checkout. Let me know if you have any questions.",
       "status": "read",
       "timestamp": "2026-03-10T10:00:00Z"
     },

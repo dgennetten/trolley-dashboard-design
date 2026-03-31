@@ -33,6 +33,16 @@ interface MemberDetailProps {
 const ALL_ROLES: VolunteerRoleName[] = ['Board Member', 'Motorman', 'Conductor', 'Depot Staff', 'Mechanic']
 const ALL_LEVELS: MembershipLevelName[] = ['Depot', 'Mountain Barn', 'Howes Barn', 'Lifetime']
 
+const PAYMENT_METHOD_LABELS: Record<string, string> = {
+  card: 'Credit Card',
+  paypal: 'PayPal',
+  venmo: 'Venmo',
+}
+
+function paymentMethodLabel(method: string) {
+  return PAYMENT_METHOD_LABELS[method] ?? method
+}
+
 function certBadge(status: string) {
   const styles: Record<string, string> = {
     certified: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400',
@@ -325,7 +335,7 @@ export function MemberDetail({
                   </div>
                   <p className="text-xs text-stone-500 dark:text-stone-400 ml-7">
                     Paid {new Date(member.datePaid).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
-                    {' · '}via {member.paymentMethod}
+                    {' · '}via {paymentMethodLabel(member.paymentMethod)}
                   </p>
                 </div>
                 {member.paymentStatus === 'past_due' && (

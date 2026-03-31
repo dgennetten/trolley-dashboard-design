@@ -24,7 +24,7 @@ A configurable piece of content on the public website — hero images, temporary
 A timestamped record of a change made to membership data. Displayed in the admin dashboard's recent-activity feed to track additions, edits, renewals, and status changes.
 
 ### Payment
-A record of a membership payment or donation. Tracks the amount, payment method (Venmo, PayPal, or check), date, and whether it has been received and applied to the member's account.
+A record of a membership payment or donation. Tracks the amount, payment method (PayPal Braintree — credit/debit card, PayPal, or Venmo), Braintree transaction ID, date, and whether it has been received and applied to the member's account.
 
 ### Message
 A communication sent between a member and a membership admin or their volunteer role manager. Supports the in-app messaging feature available from the member portal.

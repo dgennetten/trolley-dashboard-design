@@ -1,0 +1,31 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - button "Back" [ref=e6]:
+        - img
+        - text: Back
+      - generic [ref=e8]:
+        - img [ref=e9]
+        - generic [ref=e11]: Public Website
+        - generic [ref=e12]: /
+        - generic [ref=e13]: SupportUsPage
+      - generic [ref=e14]:
+        - generic [ref=e15]:
+          - button "Mobile (30%)" [ref=e16]:
+            - img [ref=e17]
+          - button "Tablet (60%)" [ref=e19]:
+            - img [ref=e20]
+          - button "Desktop (100%)" [ref=e22]:
+            - img [ref=e23]
+        - generic [ref=e25]: 100%
+        - 'button "Theme: system" [ref=e26]':
+          - img
+        - link "Fullscreen" [ref=e27] [cursor=pointer]:
+          - /url: /sections/public-website/screen-designs/SupportUsPage/fullscreen
+          - img [ref=e28]
+          - text: Fullscreen
+  - generic [ref=e33]:
+    - img [ref=e36]
+    - iframe [ref=e44]:
+      - generic [ref=f1e4]: Loading...
+    - img [ref=e47]

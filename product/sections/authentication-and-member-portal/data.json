@@ -98,7 +98,7 @@
     {
       "id": "pay-101",
       "amount": 50,
-      "method": "stripe",
+      "method": "card",
       "date": "2025-04-02",
       "description": "Mountain Barn Level — Annual Renewal",
       "status": "confirmed"
@@ -114,7 +114,7 @@
     {
       "id": "pay-065",
       "amount": 20,
-      "method": "check",
+      "method": "card",
       "date": "2023-04-10",
       "description": "Depot Level — Annual Renewal",
       "status": "confirmed"

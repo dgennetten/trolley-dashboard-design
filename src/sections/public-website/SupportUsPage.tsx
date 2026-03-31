@@ -3,8 +3,7 @@ import { SupportUsPage } from './components/SupportUsPage'
 import type {
   MembershipLevel,
   SupportOption,
-  PaymentOptions,
-  PaymentMethod,
+  BraintreeConfig,
 } from '@/../product/sections/public-website/types'
 
 export default function SupportUsPagePreview() {
@@ -12,12 +11,12 @@ export default function SupportUsPagePreview() {
     <SupportUsPage
       membershipLevels={data.membershipLevels as MembershipLevel[]}
       supportOptions={data.supportOptions as SupportOption[]}
-      paymentOptions={data.paymentOptions as PaymentOptions}
+      braintreeConfig={data.braintreeConfig as BraintreeConfig}
       onSubmitMemberSignup={(formData) =>
         console.log('Member signup submitted:', formData)
       }
-      onDonate={(method: PaymentMethod) =>
-        console.log('Donate via:', method)
+      onDonate={(nonce, amount) =>
+        console.log('Donate:', { nonce, amount })
       }
       onNavigate={(href) => console.log('Navigate:', href)}
     />

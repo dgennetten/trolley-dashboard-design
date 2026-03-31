@@ -25,7 +25,7 @@ A built-in CMS lets authorized admins update public-facing content (hero, notice
 - Supabase authentication with granular role-based access control: CMS Admin (content only), Membership Admin (members/activity/notifications), and Super Admin (all areas including Settings)
 - Membership admin dashboard: filterable list (level, role, cert status, payment status), exports (.doc, .pdf, .csv), activity log
 - Member self-service portal: personal profile and payment status, volunteer group roster and certification statuses, annual/past-due renewal, messaging to admin or role manager
-- New member application form with Venmo/PayPal/check payment options
+- New member application form with PayPal Braintree payment (credit/debit card, PayPal, Venmo)
 - Charter request form (name, email, day-of-event phone, preferred/secondary dates & times, message); the requester's phone serves as the point of contact for motormen and staff throughout the charter process
 - Volunteer role tracking (Board Member, Motorman, Conductor, Depot Staff, Mechanic, plus Leads for each) with certification status; members may hold multiple roles
 - Lead view: leads see an admin dashboard scoped to their subordinates (volunteers in the same role category), with bulk "needs recertification" reset (typically at season start) and individual recertification marking
