@@ -20,6 +20,7 @@ export interface MemberVolunteerRole {
   certificationStatus: CertificationStatus
   certifiedDate: string | null
   isLead: boolean
+  isAssistantLead: boolean
 }
 
 export interface MemberListItem {
@@ -83,9 +84,45 @@ export interface LeadGroupStats {
 
 export interface LeadDashboard {
   leadName: string
+  assistantLeadName: string | null
   role: VolunteerRoleName
   stats: LeadGroupStats
   subordinates: LeadSubordinate[]
+}
+
+export type ContactRoleTitle = 'Lead' | 'Assistant Lead' | 'Member'
+export type FinancialRowType = 'income' | 'expense'
+
+export interface ContactListEntry {
+  memberId: string
+  name: string
+  roleTitle: ContactRoleTitle
+  cell: string
+  email: string
+}
+
+export interface GroupContactList {
+  group: VolunteerRoleName
+  members: ContactListEntry[]
+}
+
+export interface LeadsContactListEntry {
+  group: VolunteerRoleName
+  roleTitle: 'Lead' | 'Assistant Lead'
+  name: string
+  cell: string
+  email: string
+}
+
+export interface MonthlyFinancialRow {
+  category: string
+  type: FinancialRowType
+  monthlyAmounts: number[]
+}
+
+export interface MonthlyFinancials {
+  months: string[]
+  rows: MonthlyFinancialRow[]
 }
 
 export interface MemberUpdateData {
@@ -120,6 +157,10 @@ export interface MembershipAdminDashboardProps {
   adminMessages: AdminMessage[]
   leadDashboard: LeadDashboard | null
 
+  groupContactLists: GroupContactList[]
+  leadsContactList: LeadsContactListEntry[]
+  monthlyFinancials: MonthlyFinancials | null
+
   /** Navigate to member detail */
   onViewMember?: (memberId: string) => void
   /** Update a member's data */
@@ -142,6 +183,11 @@ export interface MembershipAdminDashboardProps {
   onRecertifyMember?: (memberId: string, role: VolunteerRoleName) => void
   /** Bulk reset all subordinates to "needs recertification" (lead action) */
   onBulkResetCertification?: (role: VolunteerRoleName) => void
+
+  /** Export a group's contact list as PDF */
+  onExportGroupContactList?: (group: VolunteerRoleName) => void
+  /** Export the all-leads contact list as PDF */
+  onExportLeadsContactList?: () => void
 
   /** Navigate to a section/page */
   onNavigate?: (path: string) => void

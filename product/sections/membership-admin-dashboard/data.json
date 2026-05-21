@@ -6,14 +6,19 @@
       "MemberDetail": "The complete editable record for a single member including contact info, address, membership info, payment history, and volunteer roles with certification status.",
       "ActivityLogEntry": "A timestamped record of a membership data change shown in the activity feed.",
       "AdminMessage": "A message in the admin flat message list — can be sent or received, with subject, body, and status.",
-      "LeadDashboard": "A scoped mini-dashboard for a lead's volunteer role group with group stats and a subordinate roster."
+      "LeadDashboard": "A scoped mini-dashboard for a lead's volunteer role group with group stats and a subordinate roster.",
+      "GroupContactList": "A printable/exportable contact list for one volunteer group, split into a Leadership section and an All Members section with name, cell, and email columns.",
+      "LeadsContactListEntry": "A single row in the cross-group Leads contact list, showing group, role title (Lead or Assistant Lead), name, cell, and email.",
+      "MonthlyFinancials": "A rolling 12-month financial summary with income and expense category totals per month, visible to Board and Admin roles only."
     },
     "relationships": [
       "DashboardStats aggregates data across all MemberListItems",
       "MemberListItem is a summary view of MemberDetail",
       "ActivityLogEntry references a MemberDetail by memberId",
       "AdminMessage references a MemberDetail as sender or recipient",
-      "LeadDashboard contains a filtered subset of MemberListItems for one volunteer role"
+      "LeadDashboard contains a filtered subset of MemberListItems for one volunteer role",
+      "GroupContactList is derived from MemberListItems filtered by VolunteerRole",
+      "LeadsContactListEntry is derived from MemberListItems where isLead or isAssistantLead is true"
     ]
   },
   "dashboardStats": {
@@ -41,7 +46,7 @@
       "paymentStatus": "current",
       "paymentMethod": "venmo",
       "volunteerRoles": [
-        { "role": "Conductor", "certificationStatus": "certified", "certifiedDate": "2025-04-12", "isLead": false }
+        { "role": "Conductor", "certificationStatus": "certified", "certifiedDate": "2025-04-12", "isLead": false, "isAssistantLead": false }
       ],
       "lastLogin": "2026-03-14T09:22:00Z",
       "joinDate": "2020-03-01"
@@ -64,8 +69,8 @@
       "paymentStatus": "current",
       "paymentMethod": "card",
       "volunteerRoles": [
-        { "role": "Conductor", "certificationStatus": "certified", "certifiedDate": "2025-04-08", "isLead": true },
-        { "role": "Board Member", "certificationStatus": "not_applicable", "certifiedDate": null, "isLead": false }
+        { "role": "Conductor", "certificationStatus": "certified", "certifiedDate": "2025-04-08", "isLead": true, "isAssistantLead": false },
+        { "role": "Board Member", "certificationStatus": "not_applicable", "certifiedDate": null, "isLead": false, "isAssistantLead": false }
       ],
       "lastLogin": "2026-03-13T16:45:00Z",
       "joinDate": "2015-06-01"
@@ -88,8 +93,8 @@
       "paymentStatus": "lifetime",
       "paymentMethod": "card",
       "volunteerRoles": [
-        { "role": "Board Member", "certificationStatus": "not_applicable", "certifiedDate": null, "isLead": false },
-        { "role": "Motorman", "certificationStatus": "certified", "certifiedDate": "2025-04-20", "isLead": false }
+        { "role": "Board Member", "certificationStatus": "not_applicable", "certifiedDate": null, "isLead": true, "isAssistantLead": false },
+        { "role": "Motorman", "certificationStatus": "certified", "certifiedDate": "2025-04-20", "isLead": false, "isAssistantLead": false }
       ],
       "lastLogin": "2026-03-14T11:30:00Z",
       "joinDate": "2010-01-15"
@@ -112,8 +117,8 @@
       "paymentStatus": "current",
       "paymentMethod": "paypal",
       "volunteerRoles": [
-        { "role": "Board Member", "certificationStatus": "not_applicable", "certifiedDate": null, "isLead": false },
-        { "role": "Depot Staff", "certificationStatus": "certified", "certifiedDate": "2025-05-01", "isLead": true }
+        { "role": "Board Member", "certificationStatus": "not_applicable", "certifiedDate": null, "isLead": false, "isAssistantLead": true },
+        { "role": "Depot Staff", "certificationStatus": "certified", "certifiedDate": "2025-05-01", "isLead": true, "isAssistantLead": false }
       ],
       "lastLogin": "2026-03-12T08:15:00Z",
       "joinDate": "2012-04-01"
@@ -136,7 +141,7 @@
       "paymentStatus": "past_due",
       "paymentMethod": "venmo",
       "volunteerRoles": [
-        { "role": "Mechanic", "certificationStatus": "needs_recertification", "certifiedDate": "2024-04-15", "isLead": false }
+        { "role": "Mechanic", "certificationStatus": "needs_recertification", "certifiedDate": "2024-04-15", "isLead": false, "isAssistantLead": false }
       ],
       "lastLogin": "2026-02-28T14:00:00Z",
       "joinDate": "2022-05-20"
@@ -180,7 +185,7 @@
       "paymentStatus": "current",
       "paymentMethod": "venmo",
       "volunteerRoles": [
-        { "role": "Motorman", "certificationStatus": "certified", "certifiedDate": "2025-04-22", "isLead": true }
+        { "role": "Motorman", "certificationStatus": "certified", "certifiedDate": "2025-04-22", "isLead": true, "isAssistantLead": false }
       ],
       "lastLogin": "2026-03-14T07:50:00Z",
       "joinDate": "2017-08-01"
@@ -203,7 +208,7 @@
       "paymentStatus": "current",
       "paymentMethod": "paypal",
       "volunteerRoles": [
-        { "role": "Conductor", "certificationStatus": "needs_recertification", "certifiedDate": "2024-05-10", "isLead": false }
+        { "role": "Conductor", "certificationStatus": "needs_recertification", "certifiedDate": "2024-05-10", "isLead": false, "isAssistantLead": true }
       ],
       "lastLogin": "2026-03-10T13:20:00Z",
       "joinDate": "2023-03-01"
@@ -226,8 +231,8 @@
       "paymentStatus": "current",
       "paymentMethod": "card",
       "volunteerRoles": [
-        { "role": "Mechanic", "certificationStatus": "certified", "certifiedDate": "2025-04-18", "isLead": true },
-        { "role": "Motorman", "certificationStatus": "certified", "certifiedDate": "2025-04-22", "isLead": false }
+        { "role": "Mechanic", "certificationStatus": "certified", "certifiedDate": "2025-04-18", "isLead": true, "isAssistantLead": false },
+        { "role": "Motorman", "certificationStatus": "certified", "certifiedDate": "2025-04-22", "isLead": false, "isAssistantLead": false }
       ],
       "lastLogin": "2026-03-13T10:00:00Z",
       "joinDate": "2016-02-01"
@@ -250,7 +255,7 @@
       "paymentStatus": "lifetime",
       "paymentMethod": "card",
       "volunteerRoles": [
-        { "role": "Depot Staff", "certificationStatus": "certified", "certifiedDate": "2025-05-03", "isLead": false }
+        { "role": "Depot Staff", "certificationStatus": "certified", "certifiedDate": "2025-05-03", "isLead": false, "isAssistantLead": false }
       ],
       "lastLogin": "2026-03-11T15:45:00Z",
       "joinDate": "2013-06-15"
@@ -430,6 +435,7 @@
   ],
   "leadDashboard": {
     "leadName": "Craig Stith",
+    "assistantLeadName": "Emily Nguyen",
     "role": "Conductor",
     "stats": {
       "totalInGroup": 7,
@@ -445,5 +451,75 @@
       { "memberId": "mbr-014", "name": "Janet Kim", "certificationStatus": "certified", "certifiedDate": "2025-05-02" },
       { "memberId": "mbr-015", "name": "Kevin O'Reilly", "certificationStatus": "needs_recertification", "certifiedDate": "2024-05-15" }
     ]
+  },
+  "reports": {
+    "groupContactLists": [
+      {
+        "group": "Board Member",
+        "members": [
+          { "memberId": "mbr-003", "name": "Jim Bowers", "roleTitle": "Lead", "cell": "(970) 555-0177", "email": "jim.bowers@email.com" },
+          { "memberId": "mbr-004", "name": "Maree Johnston", "roleTitle": "Assistant Lead", "cell": "(970) 555-0211", "email": "maree.johnston@email.com" },
+          { "memberId": "mbr-002", "name": "Craig Stith", "roleTitle": "Member", "cell": "(970) 555-0198", "email": "craig.stith@email.com" }
+        ]
+      },
+      {
+        "group": "Conductor",
+        "members": [
+          { "memberId": "mbr-002", "name": "Craig Stith", "roleTitle": "Lead", "cell": "(970) 555-0198", "email": "craig.stith@email.com" },
+          { "memberId": "mbr-008", "name": "Emily Nguyen", "roleTitle": "Assistant Lead", "cell": "(970) 555-0456", "email": "emily.nguyen@email.com" },
+          { "memberId": "mbr-001", "name": "Sarah Mitchell", "roleTitle": "Member", "cell": "(970) 555-0142", "email": "sarah.mitchell@email.com" },
+          { "memberId": "mbr-011", "name": "Tom Redfield", "roleTitle": "Member", "cell": "(970) 555-0621", "email": "tom.redfield@email.com" },
+          { "memberId": "mbr-012", "name": "Angela Ruiz", "roleTitle": "Member", "cell": "(970) 555-0734", "email": "angela.ruiz@email.com" },
+          { "memberId": "mbr-013", "name": "Brian Paulsen", "roleTitle": "Member", "cell": "(970) 555-0845", "email": "brian.paulsen@email.com" },
+          { "memberId": "mbr-014", "name": "Janet Kim", "roleTitle": "Member", "cell": "(970) 555-0912", "email": "janet.kim@email.com" },
+          { "memberId": "mbr-015", "name": "Kevin O'Reilly", "roleTitle": "Member", "cell": "(970) 555-1023", "email": "kevin.oreilly@email.com" }
+        ]
+      },
+      {
+        "group": "Motorman",
+        "members": [
+          { "memberId": "mbr-007", "name": "Robert Tanaka", "roleTitle": "Lead", "cell": "(970) 555-0401", "email": "robert.tanaka@email.com" },
+          { "memberId": "mbr-009", "name": "Marcus Williams", "roleTitle": "Member", "cell": "(970) 555-0512", "email": "marcus.williams@email.com" }
+        ]
+      },
+      {
+        "group": "Depot Staff",
+        "members": [
+          { "memberId": "mbr-004", "name": "Maree Johnston", "roleTitle": "Lead", "cell": "(970) 555-0211", "email": "maree.johnston@email.com" },
+          { "memberId": "mbr-010", "name": "Linda Foster", "roleTitle": "Member", "cell": "(970) 555-0578", "email": "linda.foster@email.com" }
+        ]
+      },
+      {
+        "group": "Mechanic",
+        "members": [
+          { "memberId": "mbr-009", "name": "Marcus Williams", "roleTitle": "Lead", "cell": "(970) 555-0512", "email": "marcus.williams@email.com" },
+          { "memberId": "mbr-005", "name": "David Chen", "roleTitle": "Member", "cell": "(970) 555-0289", "email": "david.chen@email.com" }
+        ]
+      }
+    ],
+    "leadsContactList": [
+      { "group": "Board Member", "roleTitle": "Lead", "name": "Jim Bowers", "cell": "(970) 555-0177", "email": "jim.bowers@email.com" },
+      { "group": "Board Member", "roleTitle": "Assistant Lead", "name": "Maree Johnston", "cell": "(970) 555-0211", "email": "maree.johnston@email.com" },
+      { "group": "Conductor", "roleTitle": "Lead", "name": "Craig Stith", "cell": "(970) 555-0198", "email": "craig.stith@email.com" },
+      { "group": "Conductor", "roleTitle": "Assistant Lead", "name": "Emily Nguyen", "cell": "(970) 555-0456", "email": "emily.nguyen@email.com" },
+      { "group": "Motorman", "roleTitle": "Lead", "name": "Robert Tanaka", "cell": "(970) 555-0401", "email": "robert.tanaka@email.com" },
+      { "group": "Depot Staff", "roleTitle": "Lead", "name": "Maree Johnston", "cell": "(970) 555-0211", "email": "maree.johnston@email.com" },
+      { "group": "Mechanic", "roleTitle": "Lead", "name": "Marcus Williams", "cell": "(970) 555-0512", "email": "marcus.williams@email.com" }
+    ],
+    "monthlyFinancials": {
+      "months": ["Jun 2025", "Jul 2025", "Aug 2025", "Sep 2025", "Oct 2025", "Nov 2025", "Dec 2025", "Jan 2026", "Feb 2026", "Mar 2026", "Apr 2026", "May 2026"],
+      "rows": [
+        { "category": "Dues", "type": "income", "monthlyAmounts": [250, 150, 200, 300, 450, 850, 600, 4200, 3100, 800, 450, 350] },
+        { "category": "Donations", "type": "income", "monthlyAmounts": [500, 1200, 750, 300, 200, 600, 1500, 250, 0, 400, 800, 350] },
+        { "category": "Charter Fees", "type": "income", "monthlyAmounts": [1200, 1800, 2100, 1400, 600, 0, 0, 0, 0, 400, 900, 1200] },
+        { "category": "Merchandise", "type": "income", "monthlyAmounts": [85, 120, 145, 90, 65, 40, 110, 55, 30, 45, 75, 95] },
+        { "category": "Other Income", "type": "income", "monthlyAmounts": [0, 0, 2500, 0, 0, 0, 0, 0, 3000, 0, 0, 0] },
+        { "category": "Operations", "type": "expense", "monthlyAmounts": [620, 680, 710, 650, 590, 540, 510, 520, 490, 560, 600, 630] },
+        { "category": "Events", "type": "expense", "monthlyAmounts": [850, 1200, 1100, 750, 400, 200, 350, 150, 100, 300, 650, 950] },
+        { "category": "Maintenance", "type": "expense", "monthlyAmounts": [200, 450, 1200, 300, 800, 150, 0, 0, 2400, 600, 350, 175] },
+        { "category": "Insurance", "type": "expense", "monthlyAmounts": [1800, 0, 0, 1800, 0, 0, 1800, 0, 0, 1800, 0, 0] },
+        { "category": "Other Expenses", "type": "expense", "monthlyAmounts": [120, 85, 210, 95, 180, 60, 95, 75, 140, 90, 110, 80] }
+      ]
+    }
   }
 }
