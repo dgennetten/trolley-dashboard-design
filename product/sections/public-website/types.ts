@@ -85,7 +85,7 @@ export interface MembershipLevel {
   name: string
   price: number
   period: MembershipPeriod
-  /** Free trolley rides included per season. */
+  /** Trolley rides included on the membership card, usable anytime during the season. */
   rides: number
   /** Merchandise discount at the depot, as a percentage (0 = no discount). */
   discountPercent: number

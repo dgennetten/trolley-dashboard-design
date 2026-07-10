@@ -9,7 +9,7 @@ A membership in the Fort Collins Municipal Railway Society. Holds the shared mai
 A person named on a membership — their name, email, and phone. Every membership has one or two contacts (for example a couple or household sharing a single membership); the first is the primary contact used for correspondence. Each contact can sign in to the member portal with their own email (one-time code) and has a last-login timestamp, may hold one or more volunteer roles with certification status, and has one or more user roles for access control.
 
 ### MembershipLevel
-A tier of membership with an associated price, a number of free trolley rides per season, and a merchandise discount. The tiers are:
+A tier of membership with an associated price, a number of trolley rides included on the membership card (usable anytime during the season), and a merchandise discount. The tiers are:
 - **Trolley 2** — $25/year · 2 rides · 10% discount
 - **Trolley 4** — $35/year · 4 rides · 12% discount
 - **Trolley 8** — $50/year · 8 rides · 15% discount

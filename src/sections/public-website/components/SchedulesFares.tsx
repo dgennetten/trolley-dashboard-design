@@ -197,7 +197,7 @@ export function SchedulesFares({ scheduleInfo, onNavigate }: SchedulesFaresProps
               Ride for free with a membership
             </h3>
             <p className="mt-1 text-sm text-emerald-700/70 dark:text-emerald-300/60">
-              All membership levels include 6 free rides per season, starting at just $20/year.
+              Membership cards include 2–8 rides, good anytime all season, starting at just $25/year.
             </p>
           </div>
           <button

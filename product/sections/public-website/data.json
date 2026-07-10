@@ -88,7 +88,7 @@
       { "category": "Seniors (65+)", "price": 2, "note": null },
       { "category": "Children (3–12)", "price": 2, "note": null },
       { "category": "Children under 3", "price": 0, "note": "Free with paying adult" },
-      { "category": "Members", "price": 0, "note": "6 free rides per season with membership" }
+      { "category": "Members", "price": 0, "note": "Rides included on your membership card, good anytime all season" }
     ]
   },
   "charterInfo": {
@@ -111,7 +111,7 @@
       "discountPercent": 10,
       "tagline": "Perfect for casual riders!",
       "benefits": [
-        "2 rides per season",
+        "2 rides per card, good anytime all season",
         "10% discount on merchandise at the trolley depot"
       ]
     },
@@ -124,7 +124,7 @@
       "discountPercent": 12,
       "tagline": "Ideal for trolley enthusiasts!",
       "benefits": [
-        "4 rides per season",
+        "4 rides per card, good anytime all season",
         "12% discount on merchandise at the trolley depot"
       ]
     },
@@ -137,7 +137,7 @@
       "discountPercent": 15,
       "tagline": "For dedicated fans!",
       "benefits": [
-        "8 rides per season",
+        "8 rides per card, good anytime all season",
         "15% discount on merchandise at the trolley depot"
       ]
     },
@@ -150,7 +150,7 @@
       "discountPercent": 15,
       "tagline": "The ultimate expression of trolley love!",
       "benefits": [
-        "4 rides per season, for life",
+        "4 rides per card, good anytime all season — for life",
         "15% discount on merchandise at the trolley depot",
         "One-time payment — never renew"
       ]
