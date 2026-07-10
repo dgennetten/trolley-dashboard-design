@@ -131,7 +131,7 @@
     {
       "id": "pay-065",
       "amount": 25,
-      "method": "card",
+      "method": "check",
       "date": "2023-04-10",
       "description": "Trolley 2 — Annual Renewal",
       "status": "confirmed"

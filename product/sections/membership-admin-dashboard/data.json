@@ -97,7 +97,7 @@
       "membershipLevel": "Life",
       "datePaid": "2018-01-15",
       "paymentStatus": "lifetime",
-      "paymentMethod": "card",
+      "paymentMethod": "cash",
       "volunteerRoles": [
         { "role": "Board Member", "certificationStatus": "not_applicable", "certifiedDate": null, "isLead": true, "isAssistantLead": false },
         { "role": "Motorman", "certificationStatus": "certified", "certifiedDate": "2025-04-20", "isLead": false, "isAssistantLead": false }
@@ -168,7 +168,7 @@
       "membershipLevel": "Trolley 2",
       "datePaid": "2025-09-01",
       "paymentStatus": "past_due",
-      "paymentMethod": "card",
+      "paymentMethod": "check",
       "volunteerRoles": [],
       "lastLogin": "2025-12-10T10:00:00Z",
       "joinDate": "2024-09-01"

@@ -6,8 +6,11 @@ export type MessageStatus = 'sent' | 'read' | 'replied'
 
 export type MessageRecipientType = 'admin' | 'lead'
 
-/** Braintree methods plus fee-free Zelle. */
+/** Payer-selectable online methods: Braintree methods plus fee-free Zelle. */
 export type PaymentMethod = 'card' | 'paypal' | 'venmo' | 'zelle'
+
+/** Any recorded payment method, including offline ones (check/cash) an admin logs. Used in payment history. */
+export type RecordedPaymentMethod = PaymentMethod | 'check' | 'cash'
 
 export type PaymentRecordStatus = 'pending' | 'confirmed' | 'failed'
 
@@ -115,7 +118,7 @@ export interface Message {
 export interface PaymentRecord {
   id: string
   amount: number
-  method: PaymentMethod
+  method: RecordedPaymentMethod
   date: string
   description: string
   status: PaymentRecordStatus

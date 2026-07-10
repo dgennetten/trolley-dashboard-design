@@ -48,6 +48,8 @@ const METHOD_LABELS: Record<string, string> = {
   paypal: 'PayPal',
   venmo: 'Venmo',
   zelle: 'Zelle',
+  check: 'Check',
+  cash: 'Cash',
 }
 
 function methodLabel(method: string) {

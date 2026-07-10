@@ -38,6 +38,9 @@ const PAYMENT_METHOD_LABELS: Record<string, string> = {
   card: 'Credit Card',
   paypal: 'PayPal',
   venmo: 'Venmo',
+  zelle: 'Zelle',
+  check: 'Check',
+  cash: 'Cash',
 }
 
 function paymentMethodLabel(method: string) {
