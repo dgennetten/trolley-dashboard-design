@@ -3,7 +3,7 @@
     "models": {
       "DashboardStats": "Summary statistics displayed on the dashboard overview — total members, active volunteers, pending renewals, and new signups this month.",
       "MemberListItem": "A row in the members table with key fields for filtering and display. Links to the full MemberDetail.",
-      "MemberDetail": "The complete editable record for a single member including contact info, address, membership info, payment history, and volunteer roles with certification status.",
+      "MemberDetail": "The complete editable record for a single member including contact info, an optional second contact on the membership, address, membership info, payment history, and volunteer roles with certification status.",
       "ActivityLogEntry": "A timestamped record of a membership data change shown in the activity feed.",
       "AdminMessage": "A message in the admin flat message list — can be sent or received, with subject, body, and status.",
       "LeadDashboard": "A scoped mini-dashboard for a lead's volunteer role group with group stats and a subordinate roster.",
@@ -34,6 +34,12 @@
       "lastName": "Mitchell",
       "email": "sarah.mitchell@email.com",
       "phone": "(970) 555-0142",
+      "secondContact": {
+        "firstName": "Mark",
+        "lastName": "Mitchell",
+        "email": "mark.mitchell@email.com",
+        "phone": "(970) 555-0143"
+      },
       "address": {
         "line1": "412 Laurel Street",
         "line2": "",
@@ -41,7 +47,7 @@
         "state": "CO",
         "zip": "80521"
       },
-      "membershipLevel": "Mountain Barn",
+      "membershipLevel": "Trolley 4",
       "datePaid": "2025-11-15",
       "paymentStatus": "current",
       "paymentMethod": "venmo",
@@ -64,7 +70,7 @@
         "state": "CO",
         "zip": "80525"
       },
-      "membershipLevel": "Howes Barn",
+      "membershipLevel": "Trolley 8",
       "datePaid": "2026-01-10",
       "paymentStatus": "current",
       "paymentMethod": "card",
@@ -88,7 +94,7 @@
         "state": "CO",
         "zip": "80521"
       },
-      "membershipLevel": "Lifetime",
+      "membershipLevel": "Life",
       "datePaid": "2018-01-15",
       "paymentStatus": "lifetime",
       "paymentMethod": "card",
@@ -112,7 +118,7 @@
         "state": "CO",
         "zip": "80521"
       },
-      "membershipLevel": "Howes Barn",
+      "membershipLevel": "Trolley 8",
       "datePaid": "2026-01-05",
       "paymentStatus": "current",
       "paymentMethod": "paypal",
@@ -136,7 +142,7 @@
         "state": "CO",
         "zip": "80524"
       },
-      "membershipLevel": "Mountain Barn",
+      "membershipLevel": "Car Card 1",
       "datePaid": "2025-05-20",
       "paymentStatus": "past_due",
       "paymentMethod": "venmo",
@@ -159,7 +165,7 @@
         "state": "CO",
         "zip": "80528"
       },
-      "membershipLevel": "Depot",
+      "membershipLevel": "Trolley 2",
       "datePaid": "2025-09-01",
       "paymentStatus": "past_due",
       "paymentMethod": "card",
@@ -180,7 +186,7 @@
         "state": "CO",
         "zip": "80521"
       },
-      "membershipLevel": "Mountain Barn",
+      "membershipLevel": "Trolley 4",
       "datePaid": "2026-02-28",
       "paymentStatus": "current",
       "paymentMethod": "venmo",
@@ -203,7 +209,7 @@
         "state": "CO",
         "zip": "80521"
       },
-      "membershipLevel": "Depot",
+      "membershipLevel": "Trolley 2",
       "datePaid": "2026-03-01",
       "paymentStatus": "current",
       "paymentMethod": "paypal",
@@ -226,7 +232,7 @@
         "state": "CO",
         "zip": "80521"
       },
-      "membershipLevel": "Howes Barn",
+      "membershipLevel": "Trolley 8",
       "datePaid": "2026-01-20",
       "paymentStatus": "current",
       "paymentMethod": "card",
@@ -243,6 +249,12 @@
       "lastName": "Foster",
       "email": "linda.foster@email.com",
       "phone": "(970) 555-0578",
+      "secondContact": {
+        "firstName": "George",
+        "lastName": "Foster",
+        "email": "george.foster@email.com",
+        "phone": "(970) 555-0579"
+      },
       "address": {
         "line1": "890 East Elizabeth Street",
         "line2": "Unit 12",
@@ -250,7 +262,7 @@
         "state": "CO",
         "zip": "80524"
       },
-      "membershipLevel": "Lifetime",
+      "membershipLevel": "Life",
       "datePaid": "2019-06-15",
       "paymentStatus": "lifetime",
       "paymentMethod": "card",
@@ -274,7 +286,7 @@
     {
       "id": "act-002",
       "type": "renewal",
-      "description": "Membership renewed (Mountain Barn)",
+      "description": "Membership renewed (Trolley 4)",
       "memberName": "Robert Tanaka",
       "memberId": "mbr-007",
       "timestamp": "2026-02-28T14:30:00Z",
@@ -283,7 +295,7 @@
     {
       "id": "act-003",
       "type": "payment",
-      "description": "Payment received via Braintree (Venmo) — $50.00",
+      "description": "Payment received via Braintree (Venmo) — $35.00",
       "memberName": "Robert Tanaka",
       "memberId": "mbr-007",
       "timestamp": "2026-02-28T14:30:00Z",
@@ -319,7 +331,7 @@
     {
       "id": "act-007",
       "type": "level_change",
-      "description": "Membership level upgraded from Depot to Mountain Barn",
+      "description": "Membership level upgraded from Trolley 2 to Trolley 4",
       "memberName": "Sarah Mitchell",
       "memberId": "mbr-001",
       "timestamp": "2026-02-15T10:20:00Z",
@@ -328,7 +340,7 @@
     {
       "id": "act-008",
       "type": "renewal",
-      "description": "Membership renewed (Howes Barn)",
+      "description": "Membership renewed (Trolley 8)",
       "memberName": "Marcus Williams",
       "memberId": "mbr-009",
       "timestamp": "2026-01-20T08:00:00Z",
@@ -337,7 +349,7 @@
     {
       "id": "act-009",
       "type": "payment",
-      "description": "Payment received via Braintree (card) — $100.00",
+      "description": "Payment received via Braintree (card) — $50.00",
       "memberName": "Marcus Williams",
       "memberId": "mbr-009",
       "timestamp": "2026-01-20T08:00:00Z",
@@ -392,7 +404,7 @@
       "toMemberId": "mbr-005",
       "toMemberName": "David Chen",
       "subject": "Membership renewal past due",
-      "body": "Hi David, this is a friendly reminder that your Mountain Barn membership is past due. Please renew at your convenience through the member portal using a credit/debit card, PayPal, or Venmo via our secure Braintree checkout. Let me know if you have any questions.",
+      "body": "Hi David, this is a friendly reminder that your Car Card 1 membership is past due. Please renew at your convenience through the member portal using a credit/debit card, PayPal, or Venmo via our secure Braintree checkout — or send fee-free via Zelle. Let me know if you have any questions.",
       "status": "read",
       "timestamp": "2026-03-10T10:00:00Z"
     },

@@ -6,6 +6,7 @@ import type {
   MemberSignupFormData,
   PaymentMethod,
   ProcessingFeeConfig,
+  SignupContact,
   SupportOption,
   SupportOptionIcon,
   ZelleConfig,
@@ -29,6 +30,7 @@ import {
   Lock,
   Clock,
   Landmark,
+  UserPlus,
 } from 'lucide-react'
 
 export interface SupportUsPageProps {
@@ -89,6 +91,7 @@ export function SupportUsPage({
 
   // Signup state
   const [form, setForm] = useState({ ...EMPTY_FORM })
+  const [secondContact, setSecondContact] = useState<SignupContact | null>(null)
   const [signupMethod, setSignupMethod] = useState<PaymentMethod | null>(null)
   const [signupCoverFee, setSignupCoverFee] = useState(false)
   const [signupReference, setSignupReference] = useState('')
@@ -107,10 +110,17 @@ export function SupportUsPage({
   const update = (field: keyof typeof EMPTY_FORM, value: string) =>
     setForm((prev) => ({ ...prev, [field]: value }))
 
+  const updateSecond = (field: keyof SignupContact, value: string) =>
+    setSecondContact((prev) => ({
+      ...(prev ?? { firstName: '', lastName: '', email: '', phone: '' }),
+      [field]: value,
+    }))
+
   const closeModal = () => {
     setModal(null)
     setPending(null)
     setForm({ ...EMPTY_FORM })
+    setSecondContact(null)
     setSignupMethod(null)
     setSignupCoverFee(false)
     setDonateMethod(null)
@@ -119,6 +129,7 @@ export function SupportUsPage({
 
   const openSignup = (levelId?: string) => {
     setForm({ ...EMPTY_FORM, membershipLevelId: levelId ?? '' })
+    setSecondContact(null)
     setSignupMethod(null)
     setSignupCoverFee(false)
     setSignupReference(genReferenceCode('FCT'))
@@ -152,6 +163,7 @@ export function SupportUsPage({
     if (!signupMethod) return
     onSubmitMemberSignup?.({
       ...form,
+      secondContact: secondContact ?? undefined,
       paymentMethod: signupMethod,
       coverProcessingFee: signupIsZelle ? false : signupCoverFee,
       amountCharged: signupTotal,
@@ -403,6 +415,48 @@ export function SupportUsPage({
               <FormField icon={<Phone className="w-4 h-4" strokeWidth={1.5} />} label="Phone" required>
                 <input type="tel" required value={form.phone} onChange={(e) => update('phone', e.target.value)} className="form-input-support" placeholder="(970) 555-0123" />
               </FormField>
+
+              {/* Optional second contact */}
+              {secondContact === null ? (
+                <button
+                  type="button"
+                  onClick={() => setSecondContact({ firstName: '', lastName: '', email: '', phone: '' })}
+                  className="flex items-center gap-2 text-sm font-medium text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 transition-colors"
+                >
+                  <UserPlus className="w-4 h-4" strokeWidth={1.5} />
+                  Add a second contact
+                </button>
+              ) : (
+                <div className="rounded-xl border border-stone-200 dark:border-stone-700 p-4 space-y-4">
+                  <div className="flex items-center justify-between">
+                    <p className="text-xs font-semibold text-stone-400 dark:text-stone-500 uppercase tracking-wider">
+                      Second Contact
+                    </p>
+                    <button
+                      type="button"
+                      onClick={() => setSecondContact(null)}
+                      className="flex items-center gap-1 text-xs text-stone-400 hover:text-red-500 dark:hover:text-red-400 transition-colors"
+                    >
+                      <X className="w-3.5 h-3.5" strokeWidth={2} />
+                      Remove
+                    </button>
+                  </div>
+                  <div className="grid grid-cols-2 gap-4">
+                    <FormField label="First Name" required>
+                      <input type="text" required value={secondContact.firstName} onChange={(e) => updateSecond('firstName', e.target.value)} className="form-input-support" placeholder="John" />
+                    </FormField>
+                    <FormField label="Last Name" required>
+                      <input type="text" required value={secondContact.lastName} onChange={(e) => updateSecond('lastName', e.target.value)} className="form-input-support" placeholder="Smith" />
+                    </FormField>
+                  </div>
+                  <FormField icon={<Mail className="w-4 h-4" strokeWidth={1.5} />} label="Email" required>
+                    <input type="email" required value={secondContact.email} onChange={(e) => updateSecond('email', e.target.value)} className="form-input-support" placeholder="john@example.com" />
+                  </FormField>
+                  <FormField icon={<Phone className="w-4 h-4" strokeWidth={1.5} />} label="Phone" required>
+                    <input type="tel" required value={secondContact.phone} onChange={(e) => updateSecond('phone', e.target.value)} className="form-input-support" placeholder="(970) 555-0124" />
+                  </FormField>
+                </div>
+              )}
 
               {/* Address */}
               <div className="border-t border-stone-100 dark:border-stone-800 pt-5">

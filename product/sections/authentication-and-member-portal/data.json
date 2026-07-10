@@ -1,7 +1,7 @@
 {
   "_meta": {
     "models": {
-      "MemberProfile": "The authenticated member's own profile data including contact information, mailing address, membership details, volunteer roles with certification status, and payment status.",
+      "MemberProfile": "The authenticated member's own profile data including contact information, an optional second contact on the membership, mailing address, membership details, volunteer roles with certification status, and payment status.",
       "VolunteerGroup": "A group of volunteers sharing the same role, with their names, certification statuses, and the group lead's contact information.",
       "Message": "A message sent from the member to a membership admin or volunteer role lead, displayed in the member's Messages inbox.",
       "PaymentRecord": "A record of a membership payment or renewal, including amount, method (card/paypal/venmo/zelle), date, and confirmation status.",
@@ -22,6 +22,20 @@
     "lastName": "Mitchell",
     "email": "sarah.mitchell@gmail.com",
     "phone": "(970) 555-0187",
+    "secondContact": {
+      "firstName": "Mark",
+      "lastName": "Mitchell",
+      "email": "mark.mitchell@gmail.com",
+      "phone": "(970) 555-0189",
+      "volunteerRoles": [
+        {
+          "role": "Motorman",
+          "certificationStatus": "certified",
+          "isLead": false,
+          "certifiedDate": "2025-05-05"
+        }
+      ]
+    },
     "address": {
       "line1": "1423 Remington Street",
       "line2": "Apt B",
@@ -30,9 +44,9 @@
       "zipCode": "80524"
     },
     "membershipLevel": {
-      "id": "mountain-barn",
-      "name": "Mountain Barn Level",
-      "price": 50,
+      "id": "trolley-4",
+      "name": "Trolley 4",
+      "price": 35,
       "period": "year"
     },
     "memberSince": "2022-03-15",
@@ -100,42 +114,42 @@
   "paymentHistory": [
     {
       "id": "pay-101",
-      "amount": 50,
+      "amount": 35,
       "method": "card",
       "date": "2025-04-02",
-      "description": "Mountain Barn Level — Annual Renewal",
+      "description": "Trolley 4 — Annual Renewal",
       "status": "confirmed"
     },
     {
       "id": "pay-088",
-      "amount": 50,
+      "amount": 35,
       "method": "paypal",
       "date": "2024-03-28",
-      "description": "Mountain Barn Level — Annual Renewal",
+      "description": "Trolley 4 — Annual Renewal",
       "status": "confirmed"
     },
     {
       "id": "pay-065",
-      "amount": 20,
+      "amount": 25,
       "method": "card",
       "date": "2023-04-10",
-      "description": "Depot Level — Annual Renewal",
+      "description": "Trolley 2 — Annual Renewal",
       "status": "confirmed"
     },
     {
       "id": "pay-044",
-      "amount": 20,
+      "amount": 25,
       "method": "venmo",
       "date": "2022-03-15",
-      "description": "Depot Level — Initial Membership",
+      "description": "Trolley 2 — Initial Membership",
       "status": "confirmed"
     }
   ],
   "availableLevels": [
-    { "id": "depot", "name": "Depot Level", "price": 20, "period": "year" },
-    { "id": "mountain-barn", "name": "Mountain Barn Level", "price": 50, "period": "year" },
-    { "id": "howes-barn", "name": "Howes Barn Level", "price": 100, "period": "year" },
-    { "id": "lifetime", "name": "Lifetime Membership", "price": 500, "period": "one-time" }
+    { "id": "trolley-2", "name": "Trolley 2", "price": 25, "period": "year" },
+    { "id": "trolley-4", "name": "Trolley 4", "price": 35, "period": "year" },
+    { "id": "trolley-8", "name": "Trolley 8", "price": 50, "period": "year" },
+    { "id": "life", "name": "Life", "price": 500, "period": "one-time" }
   ],
   "processingFeeConfig": {
     "percentRate": 0.029,

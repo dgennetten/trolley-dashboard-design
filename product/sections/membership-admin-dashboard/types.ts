@@ -4,7 +4,7 @@ export type CertificationStatus = 'certified' | 'needs_recertification' | 'not_a
 export type ActivityType = 'new_member' | 'renewal' | 'payment' | 'role_change' | 'certification' | 'edit' | 'level_change' | 'payment_reminder'
 export type MessageDirection = 'sent' | 'received'
 export type MessageStatus = 'read' | 'unread'
-export type MembershipLevelName = 'Depot' | 'Mountain Barn' | 'Howes Barn' | 'Lifetime'
+export type MembershipLevelName = 'Trolley 2' | 'Trolley 4' | 'Trolley 8' | 'Life' | 'Car Card 1' | 'Car Card 2'
 export type VolunteerRoleName = 'Board Member' | 'Motorman' | 'Conductor' | 'Depot Staff' | 'Mechanic'
 
 export interface MemberAddress {
@@ -23,12 +23,21 @@ export interface MemberVolunteerRole {
   isAssistantLead: boolean
 }
 
+/** An optional second person named on the membership (household/joint). */
+export interface SecondContact {
+  firstName: string
+  lastName: string
+  email: string
+  phone: string
+}
+
 export interface MemberListItem {
   id: string
   firstName: string
   lastName: string
   email: string
   phone: string
+  secondContact?: SecondContact
   address: MemberAddress
   membershipLevel: MembershipLevelName
   datePaid: string

@@ -3,13 +3,22 @@
 ## Entities
 
 ### Member
-A person who has joined the Fort Collins Municipal Railway Society. Holds contact information (name, email, phone), full mailing address, membership level, date paid, payment status, last login timestamp, and optional volunteer role with certification status.
+A membership in the Fort Collins Municipal Railway Society. Holds the shared mailing address, membership level, date paid, and payment status, and has one or two associated Contacts (a primary contact and an optional second contact).
+
+### Contact
+A person named on a membership — their name, email, and phone. Every membership has one or two contacts (for example a couple or household sharing a single membership); the first is the primary contact used for correspondence. Each contact can sign in to the member portal with their own email (one-time code) and has a last-login timestamp, may hold one or more volunteer roles with certification status, and has one or more user roles for access control.
 
 ### MembershipLevel
-A tier of membership with an associated annual cost and set of benefits. The four levels are Depot ($20/year), Mountain Barn ($50/year), Howes Barn ($100/year), and Lifetime ($500 one-time).
+A tier of membership with an associated price, a number of free trolley rides per season, and a merchandise discount. The tiers are:
+- **Trolley 2** — $25/year · 2 rides · 10% discount
+- **Trolley 4** — $35/year · 4 rides · 12% discount
+- **Trolley 8** — $50/year · 8 rides · 15% discount
+- **Life** — $500 one-time · 4 rides · 15% discount
+- **Car Card 1** — $200/year · 2 rides · no discount (advertiser membership that includes a car-card advertisement inside the trolleys)
+- **Car Card 2** — $200/year · 2 rides · no discount (advertiser membership that includes a car-card advertisement inside the trolleys)
 
 ### VolunteerRole
-A role a member can hold as an active volunteer. Roles include Board Member, Motorman, Conductor, Depot Staff, and Mechanic. Each role tracks certification status and whether the member serves as a lead for that role. Leads see an admin view of all volunteers in their same role category and can bulk-reset all subordinates to "needs recertification" (typically at the start of each season) or individually mark a subordinate as recertified.
+A role a contact can hold as an active volunteer. Roles include Board Member, Motorman, Conductor, Depot Staff, and Mechanic. Each role tracks certification status and whether the contact serves as a lead for that role. Leads see an admin view of all volunteers in their same role category and can bulk-reset all subordinates to "needs recertification" (typically at the start of each season) or individually mark a subordinate as recertified.
 
 ### Event
 A public-facing event managed through the admin CMS. Includes a title, date, description, and photos displayed on the public Events page.
@@ -29,19 +38,21 @@ A record of a membership payment or donation. Tracks the base amount, payment me
 - **Zelle** (no processing fee) — there is no Zelle API, so the payment is created in a **pending** state with a reference code the payer includes in the transfer memo, then verified and marked received by a Membership Admin. Carries an optional confirmation/reference note instead of a Braintree transaction ID.
 
 ### Message
-A communication sent between a member and a membership admin or their volunteer role manager. Supports the in-app messaging feature available from the member portal.
+A communication sent between a contact and a membership admin or their volunteer role manager. Supports the in-app messaging feature available from the member portal.
 
 ### UserRole
-A role assigned to a user for access control purposes. Roles include: member, lead, cms_admin (Content Management access only), membership_admin (Members, Activity Log, Notifications — no Content Management), and super_admin (all areas including Settings). Roles are flexible and configurable per user.
+A role assigned to a contact for access control purposes. Roles include: member, lead, cms_admin (Content Management access only), membership_admin (Members, Activity Log, Notifications — no Content Management), and super_admin (all areas including Settings). Roles are flexible and configurable per contact.
 
 ## Relationships
 
+- Member has one or two Contacts (a primary and an optional second)
 - Member has one MembershipLevel
-- Member has zero or many VolunteerRoles
 - Member has many Payments
-- Member has many Messages (sent)
 - Member has many ActivityLog entries (as subject)
-- Member has one or more UserRoles
-- Event is managed by users with an admin UserRole
-- ContentBlock is managed by users with an admin UserRole
+- Contact belongs to one Member
+- Contact has zero or many VolunteerRoles
+- Contact has one or more UserRoles
+- Contact has many Messages (sent)
+- Event is managed by contacts with an admin UserRole
+- ContentBlock is managed by contacts with an admin UserRole
 - CharterRequest is standalone (public submission, not tied to a Member)

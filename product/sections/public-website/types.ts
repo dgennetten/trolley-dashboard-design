@@ -85,6 +85,10 @@ export interface MembershipLevel {
   name: string
   price: number
   period: MembershipPeriod
+  /** Free trolley rides included per season. */
+  rides: number
+  /** Merchandise discount at the depot, as a percentage (0 = no discount). */
+  discountPercent: number
   tagline: string
   benefits: string[]
 }
@@ -115,11 +119,21 @@ export interface ZelleConfig {
   instructions: string
 }
 
+/** A person on a membership. Every membership has a primary contact and an optional second contact. */
+export interface SignupContact {
+  firstName: string
+  lastName: string
+  email: string
+  phone: string
+}
+
 export interface MemberSignupFormData {
   firstName: string
   lastName: string
   email: string
   phone: string
+  /** Optional second person on the membership (household/joint). */
+  secondContact?: SignupContact
   addressLine1: string
   addressLine2?: string
   city: string

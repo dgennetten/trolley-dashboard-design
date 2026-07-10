@@ -276,11 +276,42 @@ export function ProfilePage({
         </div>
 
         {!editing ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <InfoRow icon={<User className="w-4 h-4" />} label="Name" value={`${profile.firstName} ${profile.lastName}`} />
-            <InfoRow icon={<Mail className="w-4 h-4" />} label="Email" value={profile.email} />
-            <InfoRow icon={<Phone className="w-4 h-4" />} label="Phone" value={profile.phone} />
-            <InfoRow icon={<MapPin className="w-4 h-4" />} label="Address" value={`${profile.address.line1}${profile.address.line2 ? ', ' + profile.address.line2 : ''}, ${profile.address.city}, ${profile.address.state} ${profile.address.zipCode}`} />
+          <div className="space-y-5">
+            {profile.secondContact && (
+              <p className="text-xs font-semibold text-stone-400 dark:text-stone-500 uppercase tracking-wider">
+                Primary Contact
+              </p>
+            )}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <InfoRow icon={<User className="w-4 h-4" />} label="Name" value={`${profile.firstName} ${profile.lastName} (You)`} />
+              <InfoRow icon={<Mail className="w-4 h-4" />} label="Email" value={profile.email} />
+              <InfoRow icon={<Phone className="w-4 h-4" />} label="Phone" value={profile.phone} />
+              <InfoRow icon={<MapPin className="w-4 h-4" />} label="Address" value={`${profile.address.line1}${profile.address.line2 ? ', ' + profile.address.line2 : ''}, ${profile.address.city}, ${profile.address.state} ${profile.address.zipCode}`} />
+            </div>
+
+            {profile.secondContact && (
+              <div className="pt-5 border-t border-stone-100 dark:border-stone-800 space-y-4">
+                <p className="text-xs font-semibold text-stone-400 dark:text-stone-500 uppercase tracking-wider">
+                  Second Contact
+                </p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <InfoRow icon={<User className="w-4 h-4" />} label="Name" value={`${profile.secondContact.firstName} ${profile.secondContact.lastName}`} />
+                  <InfoRow icon={<Mail className="w-4 h-4" />} label="Email" value={profile.secondContact.email} />
+                  <InfoRow icon={<Phone className="w-4 h-4" />} label="Phone" value={profile.secondContact.phone} />
+                </div>
+                {profile.secondContact.volunteerRoles.length > 0 && (
+                  <div className="flex flex-wrap gap-2">
+                    {profile.secondContact.volunteerRoles.map((vr) => (
+                      <div key={vr.role} className="flex items-center gap-2 bg-stone-50 dark:bg-stone-800 rounded-lg px-3 py-1.5">
+                        <Award className="w-4 h-4 text-stone-400 dark:text-stone-500" strokeWidth={1.5} />
+                        <span className="text-sm font-medium text-stone-700 dark:text-stone-300">{vr.role}</span>
+                        {certBadge(vr.certificationStatus)}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
           </div>
         ) : (
           <div className="space-y-4">

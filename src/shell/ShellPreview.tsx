@@ -264,7 +264,7 @@ function PortalContent({ mode }: { mode: string }) {
             </div>
             <div className="flex-1 min-w-0">
               <h2 className="text-lg font-semibold text-stone-900 dark:text-stone-100 font-['DM_Sans']">Alex Morgan</h2>
-              <p className="text-sm text-stone-500 dark:text-stone-400">Mountain Barn Level &middot; Member since 2023</p>
+              <p className="text-sm text-stone-500 dark:text-stone-400">Trolley 4 &middot; Member since 2023</p>
               <div className="mt-3 flex flex-wrap gap-2">
                 <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-50 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-400">
                   Paid through 2026

@@ -19,6 +19,7 @@ import {
   Mail,
   Phone,
   MapPin,
+  User,
 } from 'lucide-react'
 
 interface MemberDetailProps {
@@ -31,7 +32,7 @@ interface MemberDetailProps {
 }
 
 const ALL_ROLES: VolunteerRoleName[] = ['Board Member', 'Motorman', 'Conductor', 'Depot Staff', 'Mechanic']
-const ALL_LEVELS: MembershipLevelName[] = ['Depot', 'Mountain Barn', 'Howes Barn', 'Lifetime']
+const ALL_LEVELS: MembershipLevelName[] = ['Trolley 2', 'Trolley 4', 'Trolley 8', 'Life', 'Car Card 1', 'Car Card 2']
 
 const PAYMENT_METHOD_LABELS: Record<string, string> = {
   card: 'Credit Card',
@@ -274,6 +275,26 @@ export function MemberDetail({
                     {member.address.city}, {member.address.state} {member.address.zip}
                   </span>
                 </div>
+
+                {member.secondContact && (
+                  <div className="mt-3 pt-3 border-t border-stone-100 dark:border-stone-800 space-y-2">
+                    <p className="text-xs font-semibold text-stone-400 dark:text-stone-500 uppercase tracking-wider">
+                      Second Contact
+                    </p>
+                    <div className="flex items-center gap-2 text-sm text-stone-700 dark:text-stone-300">
+                      <User className="w-4 h-4 text-stone-400" />
+                      {member.secondContact.firstName} {member.secondContact.lastName}
+                    </div>
+                    <div className="flex items-center gap-2 text-sm text-stone-700 dark:text-stone-300">
+                      <Mail className="w-4 h-4 text-stone-400" />
+                      {member.secondContact.email}
+                    </div>
+                    <div className="flex items-center gap-2 text-sm text-stone-700 dark:text-stone-300">
+                      <Phone className="w-4 h-4 text-stone-400" />
+                      {member.secondContact.phone}
+                    </div>
+                  </div>
+                )}
               </div>
             )}
           </div>

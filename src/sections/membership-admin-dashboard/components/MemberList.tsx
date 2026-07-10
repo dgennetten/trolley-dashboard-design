@@ -25,7 +25,7 @@ interface MemberListProps {
 type SortKey = 'name' | 'email' | 'membershipLevel' | 'paymentStatus' | 'lastLogin'
 type SortDir = 'asc' | 'desc'
 
-const LEVELS: MembershipLevelName[] = ['Depot', 'Mountain Barn', 'Howes Barn', 'Lifetime']
+const LEVELS: MembershipLevelName[] = ['Trolley 2', 'Trolley 4', 'Trolley 8', 'Life', 'Car Card 1', 'Car Card 2']
 const ROLES: VolunteerRoleName[] = ['Board Member', 'Motorman', 'Conductor', 'Depot Staff', 'Mechanic']
 const CERT_STATUSES: CertificationStatus[] = ['certified', 'needs_recertification', 'not_applicable']
 const PAY_STATUSES: PaymentStatus[] = ['current', 'past_due', 'lifetime']
@@ -50,10 +50,12 @@ function paymentBadge(status: PaymentStatus) {
 
 function levelBadge(level: MembershipLevelName) {
   const styles: Record<MembershipLevelName, string> = {
-    Depot: 'bg-stone-100 text-stone-600 dark:bg-stone-700 dark:text-stone-300',
-    'Mountain Barn': 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400',
-    'Howes Barn': 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400',
-    Lifetime: 'bg-violet-100 text-violet-700 dark:bg-violet-900/30 dark:text-violet-400',
+    'Trolley 2': 'bg-stone-100 text-stone-600 dark:bg-stone-700 dark:text-stone-300',
+    'Trolley 4': 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400',
+    'Trolley 8': 'bg-teal-100 text-teal-700 dark:bg-teal-900/30 dark:text-teal-400',
+    Life: 'bg-violet-100 text-violet-700 dark:bg-violet-900/30 dark:text-violet-400',
+    'Car Card 1': 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400',
+    'Car Card 2': 'bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400',
   }
   return (
     <span className={`inline-flex px-2 py-0.5 rounded-full text-[11px] font-medium ${styles[level]}`}>

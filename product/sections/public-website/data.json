@@ -103,49 +103,56 @@
   },
   "membershipLevels": [
     {
-      "id": "depot",
-      "name": "Depot Level",
-      "price": 20,
+      "id": "trolley-2",
+      "name": "Trolley 2",
+      "price": 25,
       "period": "year",
+      "rides": 2,
+      "discountPercent": 10,
       "tagline": "Perfect for casual riders!",
       "benefits": [
-        "6 rides per season"
-      ]
-    },
-    {
-      "id": "mountain-barn",
-      "name": "Mountain Barn Level",
-      "price": 50,
-      "period": "year",
-      "tagline": "Ideal for trolley enthusiasts!",
-      "benefits": [
-        "6 rides per season",
+        "2 rides per season",
         "10% discount on merchandise at the trolley depot"
       ]
     },
     {
-      "id": "howes-barn",
-      "name": "Howes Barn Level",
-      "price": 100,
+      "id": "trolley-4",
+      "name": "Trolley 4",
+      "price": 35,
       "period": "year",
-      "tagline": "For dedicated fans!",
+      "rides": 4,
+      "discountPercent": 12,
+      "tagline": "Ideal for trolley enthusiasts!",
       "benefits": [
-        "6 rides per season",
-        "10% discount on merchandise at the trolley depot",
-        "Trolley branded cup/glass"
+        "4 rides per season",
+        "12% discount on merchandise at the trolley depot"
       ]
     },
     {
-      "id": "lifetime",
-      "name": "Lifetime Membership",
+      "id": "trolley-8",
+      "name": "Trolley 8",
+      "price": 50,
+      "period": "year",
+      "rides": 8,
+      "discountPercent": 15,
+      "tagline": "For dedicated fans!",
+      "benefits": [
+        "8 rides per season",
+        "15% discount on merchandise at the trolley depot"
+      ]
+    },
+    {
+      "id": "life",
+      "name": "Life",
       "price": 500,
       "period": "one-time",
+      "rides": 4,
+      "discountPercent": 15,
       "tagline": "The ultimate expression of trolley love!",
       "benefits": [
-        "6 rides per season",
-        "10% discount on merchandise at the trolley depot",
-        "Trolley branded cup/glass",
-        "Unique trolley art/print"
+        "4 rides per season, for life",
+        "15% discount on merchandise at the trolley depot",
+        "One-time payment — never renew"
       ]
     }
   ],

@@ -55,12 +55,23 @@ export interface MemberVolunteerRole {
   certifiedDate: string | null
 }
 
+/** A second person named on the membership, with their own contact details and volunteer roles. */
+export interface ProfileContact {
+  firstName: string
+  lastName: string
+  email: string
+  phone: string
+  volunteerRoles: MemberVolunteerRole[]
+}
+
 export interface MemberProfile {
   id: string
   firstName: string
   lastName: string
   email: string
   phone: string
+  /** Optional second contact on the membership (household/joint). */
+  secondContact?: ProfileContact
   address: MemberAddress
   membershipLevel: MemberMembershipLevel
   memberSince: string
