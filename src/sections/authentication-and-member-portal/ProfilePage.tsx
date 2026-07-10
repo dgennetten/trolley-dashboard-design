@@ -4,6 +4,8 @@ import type {
   MemberProfile,
   PaymentRecord,
   AvailableLevel,
+  ProcessingFeeConfig,
+  ZelleConfig,
 } from '@/../product/sections/authentication-and-member-portal/types'
 
 export default function ProfilePagePreview() {
@@ -12,10 +14,11 @@ export default function ProfilePagePreview() {
       profile={data.memberProfile as MemberProfile}
       paymentHistory={data.paymentHistory as PaymentRecord[]}
       availableLevels={data.availableLevels as AvailableLevel[]}
+      processingFeeConfig={data.processingFeeConfig as ProcessingFeeConfig}
+      zelleConfig={data.zelleConfig as ZelleConfig}
       onUpdateProfile={(d) => console.log('Update profile:', d)}
-      onChangePassword={(d) => console.log('Change password:', d)}
-      onRenew={(id) => console.log('Renew:', id)}
-      onUpgradeMembership={(id) => console.log('Upgrade:', id)}
+      onRenew={(d) => console.log('Renew:', d)}
+      onUpgradeMembership={(d) => console.log('Upgrade:', d)}
       onNavigate={(href) => console.log('Navigate:', href)}
     />
   )

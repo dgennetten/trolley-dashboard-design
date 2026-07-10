@@ -24,7 +24,9 @@ A configurable piece of content on the public website — hero images, temporary
 A timestamped record of a change made to membership data. Displayed in the admin dashboard's recent-activity feed to track additions, edits, renewals, and status changes.
 
 ### Payment
-A record of a membership payment or donation. Tracks the amount, payment method (PayPal Braintree — credit/debit card, PayPal, or Venmo), Braintree transaction ID, date, and whether it has been received and applied to the member's account.
+A record of a membership payment or donation. Tracks the base amount, payment method, date, and whether it has been received and applied to the member's account. Two payment paths are supported:
+- **PayPal Braintree** (credit/debit card, PayPal, or Venmo) — carries a Braintree transaction ID. The payer may check an option to **cover the processing fee** (~2.9% + $0.30); the checkbox label displays the exact computed fee and resulting total (e.g. "Add $1.75 so the Society receives the full $50.00"), and when checked the fee is added to the base amount so the Society nets the full amount. The record notes whether the fee was covered and the total charged.
+- **Zelle** (no processing fee) — there is no Zelle API, so the payment is created in a **pending** state with a reference code the payer includes in the transfer memo, then verified and marked received by a Membership Admin. Carries an optional confirmation/reference note instead of a Braintree transaction ID.
 
 ### Message
 A communication sent between a member and a membership admin or their volunteer role manager. Supports the in-app messaging feature available from the member portal.

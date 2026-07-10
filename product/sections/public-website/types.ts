@@ -89,7 +89,31 @@ export interface MembershipLevel {
   benefits: string[]
 }
 
+/** Payment methods processed through the Braintree Drop-in UI. */
 export type BraintreePaymentMethod = 'card' | 'paypal' | 'venmo'
+
+/** All payer-selectable payment methods: the Braintree methods plus fee-free Zelle. */
+export type PaymentMethod = BraintreePaymentMethod | 'zelle'
+
+/** Config for computing the exact processing fee a payer can opt to cover (Braintree methods only). */
+export interface ProcessingFeeConfig {
+  /** Percentage rate applied to the base amount, e.g. 0.029 for 2.9%. */
+  percentRate: number
+  /** Fixed per-transaction fee added on top, in dollars, e.g. 0.3. */
+  fixedFee: number
+}
+
+/** Zelle recipient details shown to the payer. Zelle has no API, so payments are reconciled manually by an admin. */
+export interface ZelleConfig {
+  /** Zelle-enrolled recipient name shown to the payer. */
+  recipientName: string
+  /** Zelle-enrolled email address the payer sends to. */
+  recipientEmail: string
+  /** Optional Zelle-enrolled phone alternative. */
+  recipientPhone?: string
+  /** Short instructions shown above the Zelle recipient details. */
+  instructions: string
+}
 
 export interface MemberSignupFormData {
   firstName: string
@@ -102,9 +126,31 @@ export interface MemberSignupFormData {
   state: string
   zipCode: string
   membershipLevelId: string
-  /** Braintree payment nonce returned by Drop-in UI */
-  braintreeNonce: string
-  paymentMethod: BraintreePaymentMethod
+  /** Method chosen from the payment radio group. */
+  paymentMethod: PaymentMethod
+  /** Whether the payer opted to cover the Braintree processing fee. Always false for Zelle. */
+  coverProcessingFee: boolean
+  /** Total charged in dollars: membership price, plus the processing fee when coverProcessingFee is true. */
+  amountCharged: number
+  /** Braintree payment nonce from the Drop-in UI. Present for card/paypal/venmo, omitted for Zelle. */
+  braintreeNonce?: string
+  /** Reference code the payer includes in the Zelle memo. Present for Zelle only. */
+  zelleReferenceCode?: string
+}
+
+export interface DonationFormData {
+  /** Base donation amount the payer chose, in dollars. */
+  amount: number
+  /** Method chosen from the payment radio group. */
+  paymentMethod: PaymentMethod
+  /** Whether the payer opted to cover the Braintree processing fee. Always false for Zelle. */
+  coverProcessingFee: boolean
+  /** Total charged in dollars: the donation amount, plus the processing fee when coverProcessingFee is true. */
+  amountCharged: number
+  /** Braintree payment nonce from the Drop-in UI. Present for card/paypal/venmo, omitted for Zelle. */
+  braintreeNonce?: string
+  /** Reference code the payer includes in the Zelle memo. Present for Zelle only. */
+  zelleReferenceCode?: string
 }
 
 export type SupportOptionIcon = 'heart' | 'users' | 'megaphone' | 'partyPopper'
@@ -160,6 +206,10 @@ export interface PublicWebsiteProps {
   supportOptions: SupportOption[]
   aboutContent: AboutContent
   braintreeConfig: BraintreeConfig
+  /** Rates used to compute the optional "cover the processing fee" amount. */
+  processingFeeConfig: ProcessingFeeConfig
+  /** Zelle recipient details shown when the payer selects Zelle. */
+  zelleConfig: ZelleConfig
 
   /** Navigate to an internal route */
   onNavigate?: (href: string) => void
@@ -167,8 +217,8 @@ export interface PublicWebsiteProps {
   onLogin?: () => void
   /** Submit a charter request form */
   onSubmitCharterRequest?: (data: CharterRequestFormData) => void
-  /** Submit a new member signup form with Braintree payment nonce */
+  /** Submit a new member signup form (Braintree nonce or a pending Zelle payment) */
   onSubmitMemberSignup?: (data: MemberSignupFormData) => void
-  /** Submit a donation with Braintree payment nonce and amount */
-  onDonate?: (nonce: string, amount: number) => void
+  /** Submit a donation (Braintree nonce or a pending Zelle payment) */
+  onDonate?: (data: DonationFormData) => void
 }

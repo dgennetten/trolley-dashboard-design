@@ -4,13 +4,16 @@
       "MemberProfile": "The authenticated member's own profile data including contact information, mailing address, membership details, volunteer roles with certification status, and payment status.",
       "VolunteerGroup": "A group of volunteers sharing the same role, with their names, certification statuses, and the group lead's contact information.",
       "Message": "A message sent from the member to a membership admin or volunteer role lead, displayed in the member's Messages inbox.",
-      "PaymentRecord": "A record of a membership payment or renewal, including amount, method, date, and confirmation status."
+      "PaymentRecord": "A record of a membership payment or renewal, including amount, method (card/paypal/venmo/zelle), date, and confirmation status.",
+      "ProcessingFeeConfig": "Percentage and fixed rates used to compute the exact fee a member can opt to cover during renewal so the Society nets the full amount.",
+      "ZelleConfig": "Zelle recipient details shown when the member chooses the fee-free Zelle method during renewal; Zelle renewals are reconciled manually by an admin."
     },
     "relationships": [
       "MemberProfile has one MembershipLevel and zero or many VolunteerRoles",
       "VolunteerGroups are derived from the member's active VolunteerRoles — one group per role",
       "Messages are sent by the member to admin or role lead recipients",
-      "PaymentRecords are associated with the MemberProfile"
+      "PaymentRecords are associated with the MemberProfile",
+      "The renewal flow uses ProcessingFeeConfig for the card/PayPal/Venmo fee checkbox and ZelleConfig for the fee-free Zelle option"
     ]
   },
   "memberProfile": {
@@ -133,5 +136,15 @@
     { "id": "mountain-barn", "name": "Mountain Barn Level", "price": 50, "period": "year" },
     { "id": "howes-barn", "name": "Howes Barn Level", "price": 100, "period": "year" },
     { "id": "lifetime", "name": "Lifetime Membership", "price": 500, "period": "one-time" }
-  ]
+  ],
+  "processingFeeConfig": {
+    "percentRate": 0.029,
+    "fixedFee": 0.3
+  },
+  "zelleConfig": {
+    "recipientName": "Fort Collins Municipal Railway Society",
+    "recipientEmail": "treasurer@fortcollinstrolley.org",
+    "recipientPhone": "(970) 555-0188",
+    "instructions": "Send your renewal via Zelle from your bank's app to the recipient below, and include the reference code in the memo so we can match it to your membership. Your renewal is confirmed once our treasurer verifies the transfer."
+  }
 }

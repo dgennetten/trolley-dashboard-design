@@ -8,14 +8,18 @@
       "MembershipLevel": "A membership tier with name, annual cost, and list of benefits.",
       "SupportOption": "An additional way to support the trolley beyond membership (donate, volunteer, advertise, charter).",
       "AboutContent": "Organization information, recognition, officers, contact details, and hours for the About page.",
-      "Officer": "A board member or officer with name and title."
+      "Officer": "A board member or officer with name and title.",
+      "BraintreeConfig": "Client token used to initialize the PayPal Braintree Drop-in UI for card/PayPal/Venmo payments.",
+      "ProcessingFeeConfig": "Percentage and fixed rates used to compute the exact fee a payer can opt to cover so the Society nets the full amount.",
+      "ZelleConfig": "Zelle recipient details (name, email, optional phone, instructions) shown when the payer selects the fee-free Zelle method; Zelle payments are reconciled manually by an admin."
     },
     "relationships": [
       "HeroContent is a singleton managed via the CMS",
       "Events are listed on the Events page and previewed on the landing page",
       "MembershipLevels are displayed on the Support Us page and in the signup modal",
       "SupportOptions are displayed below the membership section on Support Us",
-      "AboutContent is a singleton with nested officers and recognition arrays"
+      "AboutContent is a singleton with nested officers and recognition arrays",
+      "The signup and donation flows share one payment step: BraintreeConfig + ProcessingFeeConfig drive card/PayPal/Venmo payments (with the optional fee checkbox), while ZelleConfig drives the fee-free Zelle option"
     ]
   },
   "heroContent": {
@@ -224,5 +228,15 @@
   },
   "braintreeConfig": {
     "clientToken": "sandbox_braintree_client_token_placeholder"
+  },
+  "processingFeeConfig": {
+    "percentRate": 0.029,
+    "fixedFee": 0.3
+  },
+  "zelleConfig": {
+    "recipientName": "Fort Collins Municipal Railway Society",
+    "recipientEmail": "treasurer@fortcollinstrolley.org",
+    "recipientPhone": "(970) 555-0188",
+    "instructions": "Send your payment via Zelle from your bank's app to the recipient below, and include the reference code in the memo so we can match it to your membership. Your membership activates once our treasurer confirms the transfer."
   }
 }
